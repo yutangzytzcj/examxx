@@ -149,8 +149,8 @@ String basePath = request.getScheme() + "://"
 							<div class="flex-caption">
 								<!-- Left column -->
 								<div class="col-l">
-									<p style="text-indent:2em;"></p>
-									<p style="text-indent:2em;"></p>
+									<p style="text-indent:2em;">Exam++是国内首款一款基于JAVA与MYSQL开发的网络考试系统。它可以稳定、顺畅的运行在Windows与Linux平台上。您可以通过它快捷方便的创建试题和题库，发布试卷，组织考试，系统自动批改。高度的可配置性和灵活性使得它可以被应用于很多领域。</p>
+									<p style="text-indent:2em;">软件采用GPL协议，完全开放且免费，并且有固定的开发团队提供技术支持</p>
 								</div>
 								<!-- Right column -->
 								<div class="col-r">
@@ -158,12 +158,12 @@ String basePath = request.getScheme() + "://"
 									<!-- Use the class "flex-back" to add background inside flex slider -->
 
 									<!-- <img alt="" src="resources/images/ad.png"> -->
-									
+									<p>如果您对软件有任何反馈和建议，加入我们的QQ群152258375一起讨论吧</p>
 
 									<!-- Button -->
-									<!-- <div class="button">
-										<a href="user-register"><i class="fa fa-arrow-circle-down"></i> 马上加入我们吧</a>
-									</div> -->
+									<div class="button">
+										<a href="http://shang.qq.com/wpa/qunwpa?idkey=b365bd36df1bd42ffcf8ab7b91fb93f21841548bcda6ec721de276bae9f72e35"><i class="fa fa-arrow-circle-down"></i> 马上加入我们吧</a>
+									</div>
 
 								</div>
 							</div>
