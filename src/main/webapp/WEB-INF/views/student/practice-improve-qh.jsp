@@ -48,9 +48,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-xs-5">
 						<div class="logo">
 							<h1><a href="#"><img alt="" src="resources/images/logo.png"></a></h1>
-							<div class="hmeta">
-								致力优质在线考试解决方案
-							</div>
 						</div>
 					</div>
 					<div class="col-xs-7" id="login-info">
