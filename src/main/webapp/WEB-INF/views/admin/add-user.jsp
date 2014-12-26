@@ -113,12 +113,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 							<form id="user-add-form" style="margin-top:40px;"  action="admin/add-user">
 								<div class="form-line form-job-type" style="display: block;">
-									<span class="form-label"><span class="warning-label"></span>专业：</span>
+									<span class="form-label"><span class="warning-label"></span>默认题库：</span>
 									<select id="job-type-input-select" class="df-input-narrow">
 										<option value="-1">--请选择--</option>
-										<option value="2">窗口服务</option>
-										<option value="3">业报扩装</option>
-										<option value="4">电能计量</option>
+										<c:forEach items="${fieldList }" var="item">
+											<option value="${item.fieldId }">${item.fieldName }</option>
+										</c:forEach>
 									</select>
 									<span class="form-message"></span>
 									<br>

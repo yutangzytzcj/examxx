@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.extr.controller.domain.Message;
+import com.extr.domain.question.Field;
 import com.extr.domain.user.User;
 import com.extr.security.UserInfo;
+import com.extr.service.QuestionService;
 import com.extr.service.UserService;
 import com.extr.util.Page;
 import com.extr.util.PagingUtil;
@@ -33,6 +35,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private QuestionService questionService;
 
 	/**
 	 * 用户登录页面
@@ -222,7 +226,8 @@ public class UserController {
 	@RequestMapping(value = "/admin/add-user", method = RequestMethod.GET)
 	private String addUserPage(Model model, HttpServletRequest request) {
 			
-			
+		List<Field> fieldList = questionService.getAllField();
+		model.addAttribute("fieldList", fieldList);
 		return "admin/add-user";
 	}
 	
