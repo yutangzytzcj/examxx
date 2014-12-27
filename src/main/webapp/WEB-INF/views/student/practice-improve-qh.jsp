@@ -37,6 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			ul#exampaper-body li{
 				padding-bottom:0px;
 			}
+			.question-body{
+				min-height:300px;
+			}
 		
 			
 		</style>
@@ -137,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 
 					</div>
-					<div class="col-xs-9" style="padding-right: 0px;">
+					<div class="col-xs-9" style="padding-right: 0px;min-height:800px;">
 						<div class="def-bk" id="bk-exampaper">
 							<div class="expand-bk-content" id="bk-conent-exampaper">
 								<div id="exampaper-header">

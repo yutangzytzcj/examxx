@@ -103,7 +103,7 @@ String basePath = request.getScheme() + "://"
 					<div class="col-md-12">
 						<div class="lrform">
 							<h5>注册账号</h5>
-							<span class="form-message">目前暂时不开放注册</span>
+							<span class="form-message"></span>
 							<div class="form">
 								<!-- Register form (not working)-->
 								<form class="form-horizontal" id="form-create-account"
@@ -175,7 +175,7 @@ String basePath = request.getScheme() + "://"
 									<div class="form-group">
 										<!-- Buttons -->
 										<div class="col-md-9 col-md-offset-3">
-											<button type="submit" class="btn" id="btn-reg" disabled="disabled">
+											<button type="submit" class="btn" id="btn-reg">
 												注册账号
 											</button>
 											<button type="reset" class="btn">

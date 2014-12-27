@@ -273,7 +273,7 @@ var examing = {
 			var thisquestion  = $(".question:visible");
 			
 			if(thisquestion.hasClass("qt-finished")){
-				alert("此题已经做完");
+				util.error("此题已经做完");
 				return false;
 			}
 			
@@ -314,6 +314,7 @@ var examing = {
 					'Accept' : 'application/json',
 					'Content-Type' : 'application/json'
 				},
+				async:false,
 				type : "POST",
 				url : "student/practice-improve",
 				data : JSON.stringify(data)
@@ -325,6 +326,13 @@ var examing = {
 				if (message.result == "success") {
 					$(window).unbind('beforeunload');
 //					util.success("答案提交成功！");
+					
+					var thisquestion  = $(".question:visible");
+					
+					if(thisquestion.find(".answer-desc-summary").hasClass("answer-desc-success")){
+						$("#next-q-btn").click();
+					}
+					
 				} else {
 					util.error(message.result);
 				}
@@ -526,6 +534,7 @@ var examing = {
 				'Content-Type' : 'application/json'
 			},
 			type : "GET",
+			async:false,
 			cache: false,
 			url : "student/practice-improve-his/"+ knowledgePointId + "/" + questionTypeId
 		});
