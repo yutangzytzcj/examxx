@@ -107,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</li>
 							
 							<li>
-								<a href="admin/sys-backup"> <i class="fa icon-qrcode"></i> 添加题库 </a>
+								<a href="admin/add-field"> <i class="fa icon-qrcode"></i> 添加题库 </a>
 							</li>
 							
 							<li>
