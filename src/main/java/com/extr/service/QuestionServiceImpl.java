@@ -207,4 +207,10 @@ public class QuestionServiceImpl implements QuestionService {
 		// TODO Auto-generated method stub
 		questionMapper.addField(field);
 	}
+
+	@Override
+	public void addKnowledgePoint(KnowledgePoint point) {
+		// TODO Auto-generated method stub
+		questionMapper.addKnowledgePoint(point);
+	}
 }

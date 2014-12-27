@@ -300,7 +300,14 @@
 	<insert id="addField" parameterType="com.extr.domain.question.Field"
 		useGeneratedKeys="true" keyProperty="fieldId">
 		insert into et_field(field_name,memo,state) values (
-		#{field.fieldName,field.memo,field.state}
+		#{fieldName},#{memo},#{state}
+		)
+	</insert>
+	
+	<insert id="addKnowledgePoint" parameterType="com.extr.domain.question.KnowledgePoint"
+		useGeneratedKeys="true" keyProperty="pointId">
+		insert into et_knowledge_point(point_name,memo,state,field_id) values (
+		#{pointName},#{memo},#{state},#{fieldId}
 		)
 	</insert>
 </mapper>

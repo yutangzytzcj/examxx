@@ -104,4 +104,10 @@ public interface QuestionService {
 	 * @param field
 	 */
 	public void addField(Field field);
+	
+	/**
+	 * 添加知识点
+	 * @param point
+	 */
+	public void addKnowledgePoint(KnowledgePoint point);
 }

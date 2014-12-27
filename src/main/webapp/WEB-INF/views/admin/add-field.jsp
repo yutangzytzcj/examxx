@@ -126,25 +126,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="page-content row">
 
-							<form id="user-add-form" style="margin-top:40px;"  action="admin/add-user">
-								<div class="form-line form-job-type" style="display: block;">
-									<span class="form-label"><span class="warning-label"></span>题库：</span>
-									<select id="job-type-input-select" class="df-input-narrow">
-										<option value="-1">--请选择--</option>
-										<c:forEach items="${fieldList }" var="item">
-											<option value="${item.fieldId }">${item.fieldName }</option>
-										</c:forEach>
-									</select>
-									<span class="form-message"></span>
-									<br>
-								</div>
+							<form id="field-add-form" style="margin-top:40px;"  action="admin/field-add">
+								
 								<div class="form-line form-name" style="display: block;">
-									<span class="form-label"><span class="warning-label"></span>知识点名：</span>
+									<span class="form-label"><span class="warning-label"></span>题库名：</span>
 										<input type="text" class="df-input-narrow" id="name"><span class="form-message"></span>
 									<br>
 								</div>
 								<div class="form-line form-memo" style="display: block;">
-									<span class="form-label"><span class="warning-label"></span>知识点描述：</span>
+									<span class="form-label"><span class="warning-label"></span>题库描述：</span>
 										<input type="text" class="df-input-narrow" id="memo"><span class="form-message"></span>
 									<br>
 								</div>
@@ -187,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
 		<script type="text/javascript" src="resources/chart/morris.js"></script>
-		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
+		<script type="text/javascript" src="resources/js/add-field.js"></script>
 		
 	</body>
 </html>

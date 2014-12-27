@@ -114,5 +114,7 @@ public interface QuestionMapper {
 			@Param("array") List<Integer> fieldIdList,
 			@Param("typeIdList") List<Integer> questionTypeIdList);
 	
-	public void addField(@Param("field") Field field);
+	public void addField(Field field);
+	
+	public void addKnowledgePoint(KnowledgePoint point);
 }

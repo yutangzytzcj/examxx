@@ -126,10 +126,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="page-content row">
 
-							<form id="user-add-form" style="margin-top:40px;"  action="admin/add-user">
-								<div class="form-line form-job-type" style="display: block;">
+							<form id="point-add-form" style="margin-top:40px;"  action="admin/point-add">
+								<div class="form-line form-field" style="display: block;">
 									<span class="form-label"><span class="warning-label"></span>题库：</span>
-									<select id="job-type-input-select" class="df-input-narrow">
+									<select id="field-input-select" class="df-input-narrow">
 										<option value="-1">--请选择--</option>
 										<c:forEach items="${fieldList }" var="item">
 											<option value="${item.fieldId }">${item.fieldName }</option>
@@ -187,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
 		<script type="text/javascript" src="resources/chart/morris.js"></script>
-		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
+		<script type="text/javascript" src="resources/js/add-point.js"></script>
 		
 	</body>
 </html>

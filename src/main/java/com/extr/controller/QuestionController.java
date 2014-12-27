@@ -390,4 +390,67 @@ public class QuestionController {
 		return "admin/field-list";
 	}
 	
+	@RequestMapping(value = "/admin/point-list-{fieldId}-{index}", method = RequestMethod.GET)
+	public String knowledgePointPage(Model model,@PathVariable("fieldId") int fieldId,@PathVariable("index") int index){
+		
+		Page<KnowledgePoint> page = new Page<KnowledgePoint>();
+		page.setPageNo(index);
+		page.setPageSize(20);
+		
+		List<Field> fieldList = questionService.getAllField(null);
+		
+		List<KnowledgePoint> pointList = questionService.getKnowledgePointByFieldId(fieldId);
+		String pageStr = PagingUtil.getPageBtnlink(index,
+				page.getTotalPage());
+		model.addAttribute("pointList", pointList);
+		model.addAttribute("fieldList", fieldList);
+		model.addAttribute("pageStr", pageStr);
+		return "admin/point-list";
+	}
+	
+	@RequestMapping(value = "/admin/add-point", method = RequestMethod.GET)
+	public String addPointPage(Model model){
+		
+				
+		List<Field> fieldList = questionService.getAllField(null);
+		
+		model.addAttribute("fieldList", fieldList);
+		return "admin/add-point";
+	}
+	
+	@RequestMapping(value = "/admin/field-add", method = RequestMethod.POST)
+	public @ResponseBody Message addField(@RequestBody Field field){
+		
+		Message message = new Message();
+		try{
+			questionService.addField(field);
+		}catch(Exception e){
+			message.setResult(e.getClass().getName());
+			e.printStackTrace();
+		}
+		
+		return message;
+	}
+	
+	@RequestMapping(value = "/admin/point-add", method = RequestMethod.POST)
+	public @ResponseBody Message addPoint(@RequestBody KnowledgePoint point){
+		
+		Message message = new Message();
+		try{
+			questionService.addKnowledgePoint(point);
+		}catch(Exception e){
+			message.setResult(e.getClass().getName());
+			e.printStackTrace();
+		}
+		
+		return message;
+	}
+	
+	@RequestMapping(value = "/admin/add-field", method = RequestMethod.GET)
+	public String addFieldPage(Model model){
+		
+		
+		return "admin/add-field";
+	}
+	
 }
