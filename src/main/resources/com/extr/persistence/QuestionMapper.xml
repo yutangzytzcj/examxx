@@ -296,4 +296,11 @@
 		</foreach>
 		group by a.point_id,a.point_name,c.question_type_id,d.`name`
 	</select>
+	
+	<insert id="addField" parameterType="com.extr.domain.question.Field"
+		useGeneratedKeys="true" keyProperty="fieldId">
+		insert into et_field(field_name,memo,state) values (
+		#{field.fieldName,field.memo,field.state}
+		)
+	</insert>
 </mapper>

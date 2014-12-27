@@ -25,7 +25,7 @@ public interface QuestionService {
 	 * 
 	 * @return
 	 */
-	List<Field> getAllField();
+	List<Field> getAllField(Page<Field> page);
 
 	List<KnowledgePoint> getKnowledgePointByFieldId(int FieldId);
 
@@ -98,4 +98,10 @@ public interface QuestionService {
 			List<Integer> fieldIdList,List<Integer> typeIdList,int limit);
 	
 	public void updateQuestionPoint(Question question);
+	
+	/**
+	 * 添加题库
+	 * @param field
+	 */
+	public void addField(Field field);
 }

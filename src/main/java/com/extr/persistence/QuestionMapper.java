@@ -21,7 +21,7 @@ import com.extr.util.Page;
  */
 public interface QuestionMapper {
 
-	List<Field> getAllField();
+	List<Field> getAllField(@Param("page") Page<Field> page);
 
 	List<KnowledgePoint> getKnowledgePointByFieldId(
 			@Param("fieldId") int fieldId);
@@ -113,4 +113,6 @@ public interface QuestionMapper {
 	public List<QuestionQueryResult> getQuestionAnalysisListByFieldIdList(
 			@Param("array") List<Integer> fieldIdList,
 			@Param("typeIdList") List<Integer> questionTypeIdList);
+	
+	public void addField(@Param("field") Field field);
 }

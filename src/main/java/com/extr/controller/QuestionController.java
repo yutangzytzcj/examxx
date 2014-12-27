@@ -95,7 +95,7 @@ public class QuestionController {
 		String pageStr = PagingUtil.getPageBtnlink(page,
 				pageModel.getTotalPage());
 
-		model.addAttribute("fieldList", questionService.getAllField());
+		model.addAttribute("fieldList", questionService.getAllField(null));
 
 		model.addAttribute("knowledgeList",
 				questionService.getKnowledgePointByFieldId(fieldId));
@@ -149,7 +149,7 @@ public class QuestionController {
 		String pageStr = PagingUtil.getPageBtnlink(page,
 				pageModel.getTotalPage());
 
-		model.addAttribute("fieldList", questionService.getAllField());
+		model.addAttribute("fieldList", questionService.getAllField(null));
 
 		model.addAttribute("knowledgeList",
 				questionService.getKnowledgePointByFieldId(fieldId));
@@ -189,7 +189,7 @@ public class QuestionController {
 	 */
 	@RequestMapping(value = "/admin/question-add", method = RequestMethod.GET)
 	public String questionAddPage(Model model) {
-		List<Field> fieldList = questionService.getAllField();
+		List<Field> fieldList = questionService.getAllField(null);
 		model.addAttribute("fieldList", fieldList);
 		return "admin/question-add";
 	}
@@ -235,7 +235,7 @@ public class QuestionController {
 	@RequestMapping(value = "/admin/question-modify/{questionId}", method = RequestMethod.GET)
 	public String questionModifyPage(Model model,
 			@PathVariable("questionId") int questionId) {
-		List<Field> fieldList = questionService.getAllField();
+		List<Field> fieldList = questionService.getAllField(null);
 		model.addAttribute("fieldList", fieldList);
 		Question question = questionService.getQuestionByQuestionId(questionId);
 		List<KnowledgePoint> pointList = questionService.getQuestionKnowledgePointListByQuestionId(questionId);
@@ -374,6 +374,20 @@ public class QuestionController {
 		}
 		
 		return message;
+	}
+	
+	@RequestMapping(value = "/admin/field-list-{index}", method = RequestMethod.GET)
+	public String fieldListPage(Model model,@PathVariable("index") int index){
+		
+		Page<Field> page = new Page<Field>();
+		page.setPageNo(index);
+		page.setPageSize(20);
+		List<Field> fieldList = questionService.getAllField(page);
+		String pageStr = PagingUtil.getPageBtnlink(index,
+				page.getTotalPage());
+		model.addAttribute("fieldList", fieldList);
+		model.addAttribute("pageStr", pageStr);
+		return "admin/field-list";
 	}
 	
 }

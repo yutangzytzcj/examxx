@@ -12,12 +12,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE html>
 <html>
-	<head>
+  <head>
     	<base href="<%=basePath%>">
     
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>用户管理</title>
+		<title>试题管理</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="keywords" content="">
 		<link rel="shortcut icon" href="<%=basePath%>resources/images/favicon.ico" />
 		<link href="resources/bootstrap/css/bootstrap-huan.css" rel="stylesheet">
@@ -26,14 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="resources/css/slider.css" rel="stylesheet">
 		<link href="resources/css/exam.css" rel="stylesheet">
 		<link href="resources/chart/morris.css" rel="stylesheet">
-		<style type="text/css">
-			.disable-btn, .enable-btn{
-				text-decoration: underline;
-			}
-			.disable-btn, .enable-btn{
-				cursor:pointer;
-			}
-		</style>
 	</head>
 	<body>
 		<header>
@@ -108,13 +101,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li>
 								<a href="admin/sys-backup"> <i class="fa fa-bar-chart-o"></i> 数据备份 </a>
 							</li>
-							<li class="active">
-								<a> <i class="fa fa-bar-chart-o"></i> 管理员列表 </a>
+							<li>
+								<a href="admin/sys-admin-list"> <i class="fa fa-bar-chart-o"></i> 管理员列表 </a>
 							</li>
 							<li>
 								<a href="admin/add-admin"> <i class="fa fa-list-ul"></i> 添加管理员 </a>
 							</li>
-							<li>
+							<li class="active">
 								<a href="admin/field-list-1"> <i class="fa fa-bar-chart-o"></i> 题库列表 </a>
 							</li>
 						</ul>
@@ -122,53 +115,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="col-xs-9">
 						<div class="page-header">
-							<h1><i class="fa fa-bar-chart-o"></i> 管理员列表 </h1>
+							<h1><i class="fa fa-bar-chart-o"></i> 题库管理 </h1>
 						</div>
 						<div class="page-content row">
 
 							
-							<div id="question-list">
+							<div id="field-list">
 								<table class="table-striped table">
 									<thead>
 										<tr>
-											<td></td><td>ID</td><td>用户名</td><td>邮箱</td><td>用户组</td><td>注册时间</td><td>状态</td><td>操作</td>
+											<td></td>
+											<td>ID</td>
+											<td>题库名</td>
+											<td>描述</td>
+											<td>操作</td>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${userList }" var="item">
+										<c:forEach items="${fieldList }" var="item">
 											<tr>
 												<td>
-												<input type="checkbox" value="${item.id }">
-												</td><td>${item.id }</td><td>${item.username }</td><td>${item.email }</td><td>超级管理员</td><td><fmt:formatDate value="${item.create_date }" pattern="yyyy-MM-dd"/></td>
-												
-												
-												<td>
-													<c:choose>
-														<c:when test="${item.enabled == 1 }">
-															<span class="label label-success">启用</span>
-														</c:when>
-														<c:when test="${item.enabled == 0 }">
-															<span class="label label-danger">注销</span>
-														</c:when>
-														<c:otherwise>
-															其他
-														</c:otherwise>
-													</c:choose>
+													<input type="checkbox" value="${item.fieldId }">
 												</td>
-												<td>
-													<c:choose>
-														<c:when test="${item.enabled == 1 }">
-															<span class="disable-btn" data-id="${item.id}">禁用</span>
-														</c:when>
-														<c:when test="${item.enabled == 0 }">
-															<span class="enable-btn" data-id="${item.id}">启用</span>
-														</c:when>
-													</c:choose>
-												</td>
+												<td>${item.fieldId }</td>
+												<td>${item.fieldName }</td>
+												<td>${item.memo }</td>
+												<td></td>
 											</tr>
 										</c:forEach>
 										
-
 									</tbody><tfoot></tfoot>
 								</table>
 							</div>
@@ -203,73 +178,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Javascript files -->
 		<!-- jQuery -->
 		<script type="text/javascript" src="resources/js/jquery/jquery-1.9.0.min.js"></script>
-		<script type="text/javascript" src="resources/js/all.js"></script>
 		<!-- Bootstrap JS -->
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
-		<script>
-			$(function(){
-				$(".disable-btn").click(function(){
-					var message = "确定要禁用该用户吗？";
-					var answer = confirm(message);
-					if(!answer){
-						return false;
-					}
-					
-					jQuery.ajax({
-						headers : {
-							'Accept' : 'application/json',
-							'Content-Type' : 'application/json'
-						},
-						type : "GET",
-						url : 'admin/disable-user/' + $(this).data("id"),
-						success : function(message,tst,jqXHR) {
-							if(!util.checkSessionOut(jqXHR))return false;
-							if (message.result == "success") {
-								util.success("操作成功！", function(){
-									 window.location.reload();
-								});
-							} else {
-								util.error(message.result);
-							}
-						},
-						error : function(jqXHR, textStatus) {
-							util.error("操作失败请稍后尝试");
-						}
-					});
-					
-				});
-				
-				$(".enable-btn").click(function(){
-					var message = "确定要启用该用户吗？";
-					var answer = confirm(message);
-					if(!answer){
-						return false;
-					}
-					jQuery.ajax({
-						headers : {
-							'Accept' : 'application/json',
-							'Content-Type' : 'application/json'
-						},
-						type : "GET",
-						url : 'admin/enable-user/' + $(this).data("id"),
-						success : function(message,tst,jqXHR) {
-							if(!util.checkSessionOut(jqXHR))return false;
-							if (message.result == "success") {
-								util.success("操作成功！", function(){
-									 window.location.reload();
-								});
-							} else {
-								util.error(message.result);
-							}
-						},
-						error : function(jqXHR, textStatus) {
-							util.error("操作失败请稍后尝试");
-						}
-					});
-					
-				});
-			});
-		
-		</script>
+		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
+		<script type="text/javascript" src="resources/chart/morris.js"></script>
+		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
 	</body>
 </html>

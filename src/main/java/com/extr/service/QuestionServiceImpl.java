@@ -37,8 +37,8 @@ public class QuestionServiceImpl implements QuestionService {
 	private QuestionMapper questionMapper;
 
 	@Override
-	public List<Field> getAllField() {
-		return questionMapper.getAllField();
+	public List<Field> getAllField(Page<Field> page) {
+		return questionMapper.getAllField(page);
 	}
 
 	@Override
@@ -200,5 +200,11 @@ public class QuestionServiceImpl implements QuestionService {
 		}
 		
 		
+	}
+
+	@Override
+	public void addField(Field field) {
+		// TODO Auto-generated method stub
+		questionMapper.addField(field);
 	}
 }

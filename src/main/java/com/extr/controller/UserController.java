@@ -226,7 +226,7 @@ public class UserController {
 	@RequestMapping(value = "/admin/add-user", method = RequestMethod.GET)
 	private String addUserPage(Model model, HttpServletRequest request) {
 			
-		List<Field> fieldList = questionService.getAllField();
+		List<Field> fieldList = questionService.getAllField(null);
 		model.addAttribute("fieldList", fieldList);
 		return "admin/add-user";
 	}

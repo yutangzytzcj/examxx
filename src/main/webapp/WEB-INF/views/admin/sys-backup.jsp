@@ -107,6 +107,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li>
 								<a href="admin/add-admin"> <i class="fa fa-list-ul"></i> 添加管理员 </a>
 							</li>
+							<li>
+								<a href="admin/field-list-1"> <i class="fa fa-bar-chart-o"></i> 题库列表 </a>
+							</li>
 						</ul>
 
 					</div>

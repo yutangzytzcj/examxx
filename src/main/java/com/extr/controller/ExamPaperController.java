@@ -73,7 +73,7 @@ public class ExamPaperController {
 
 	@RequestMapping(value = "/admin/exampaper-add", method = RequestMethod.GET)
 	public String exampaperAddPage(Model model) {
-		List<Field> fieldList = questionService.getAllField();
+		List<Field> fieldList = questionService.getAllField(null);
 		model.addAttribute("fieldList", fieldList);
 		return "admin/exampaper-add";
 	}
