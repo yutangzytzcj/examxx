@@ -142,7 +142,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<c:forEach items="${fieldList }" var="item">
 											<tr>
 												<td>
-													<input type="checkbox" value="${item.fieldId }">
+													<c:if test="${item.removeable }">
+														<input type="checkbox" value="${item.fieldId }">
+													</c:if>
+													
 												</td>
 												<td>${item.fieldId }</td>
 												<td>${item.fieldName }</td>
