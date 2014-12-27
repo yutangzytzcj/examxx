@@ -37,7 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			ul#exampaper-body li{
 				padding-bottom:0px;
 			}
-		
+			.question-body{
+				min-height:300px;
+			}
 			
 		</style>
 	</head>

@@ -326,13 +326,11 @@ var examing = {
 				if (message.result == "success") {
 					$(window).unbind('beforeunload');
 //					util.success("答案提交成功！");
-					
 					var thisquestion  = $(".question:visible");
 					
 					if(thisquestion.find(".answer-desc-summary").hasClass("answer-desc-success")){
 						$("#next-q-btn").click();
 					}
-					
 				} else {
 					util.error(message.result);
 				}
@@ -558,7 +556,6 @@ var examing = {
 //							alert($.inArray(questionId, data));
 							$($("a.question-navi-item")[i]).addClass(
 							"pressed");
-							
 						}
 						
 						if(lastestIndex == questionId ){
