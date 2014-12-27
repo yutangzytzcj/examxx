@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-xs-3">
 						<ul class="nav default-sidenav">
 							
-							<li class="active">
+							<li>
 								<a href="admin/field-list-1"> <i class="fa icon-book"></i> 题库列表 </a>
 							</li>
 							
@@ -111,52 +111,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</li>
 							
 							<li>
-								<a href="admin/point-list-0-1"> <i class="fa icon-sitemap"></i> 知识点列表 </a>
+								<a href="admin/point-list-1-1"> <i class="fa icon-sitemap"></i> 知识点列表 </a>
 							</li>
 							
-							<li>
-								<a href="admin/add-point"> <i class="fa icon-pencil"></i> 添加知识点 </a>
+							<li class="active">
+								<a> <i class="fa icon-pencil"></i> 添加知识点 </a>
 							</li>
 						</ul>
 
 					</div>
 					<div class="col-xs-9">
 						<div class="page-header">
-							<h1><i class="fa fa-bar-chart-o"></i> 题库管理 </h1>
+							<h1><i class="fa fa-list-ul"></i> 添加知识点 </h1>
 						</div>
 						<div class="page-content row">
 
-							
-							<div id="field-list">
-								<table class="table-striped table">
-									<thead>
-										<tr>
-											<td></td>
-											<td>ID</td>
-											<td>题库名</td>
-											<td>描述</td>
-											<td>操作</td>
-										</tr>
-									</thead>
-									<tbody>
+							<form id="user-add-form" style="margin-top:40px;"  action="admin/add-user">
+								<div class="form-line form-job-type" style="display: block;">
+									<span class="form-label"><span class="warning-label"></span>题库：</span>
+									<select id="job-type-input-select" class="df-input-narrow">
+										<option value="-1">--请选择--</option>
 										<c:forEach items="${fieldList }" var="item">
-											<tr>
-												<td>
-													<input type="checkbox" value="${item.fieldId }">
-												</td>
-												<td>${item.fieldId }</td>
-												<td>${item.fieldName }</td>
-												<td>${item.memo }</td>
-												<td></td>
-											</tr>
+											<option value="${item.fieldId }">${item.fieldName }</option>
 										</c:forEach>
-										
-									</tbody><tfoot></tfoot>
-								</table>
-							</div>
-							<div id="page-link-content">
-								<ul class="pagination pagination-sm">${pageStr}</ul>
-							</div>
+									</select>
+									<span class="form-message"></span>
+									<br>
+								</div>
+								<div class="form-line form-name" style="display: block;">
+									<span class="form-label"><span class="warning-label"></span>知识点名：</span>
+										<input type="text" class="df-input-narrow" id="name"><span class="form-message"></span>
+									<br>
+								</div>
+								<div class="form-line form-memo" style="display: block;">
+									<span class="form-label"><span class="warning-label"></span>知识点描述：</span>
+										<input type="text" class="df-input-narrow" id="memo"><span class="form-message"></span>
+									<br>
+								</div>
+								
+								
+								<div class="form-line">
+									<input id="btn-save" value="确认添加" type="submit" class="df-submit">
+								</div>
+							</form>
+							
 
 						</div>
 					</div>
@@ -190,5 +188,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
 		<script type="text/javascript" src="resources/chart/morris.js"></script>
 		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
+		
 	</body>
 </html>

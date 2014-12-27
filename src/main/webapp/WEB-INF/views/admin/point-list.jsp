@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-xs-3">
 						<ul class="nav default-sidenav">
 							
-							<li class="active">
+							<li>
 								<a href="admin/field-list-1"> <i class="fa icon-book"></i> 题库列表 </a>
 							</li>
 							
@@ -110,8 +110,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<a href="admin/sys-backup"> <i class="fa icon-qrcode"></i> 添加题库 </a>
 							</li>
 							
-							<li>
-								<a href="admin/point-list-0-1"> <i class="fa icon-sitemap"></i> 知识点列表 </a>
+							<li class="active">
+								<a> <i class="fa icon-sitemap"></i> 知识点列表 </a>
 							</li>
 							
 							<li>
@@ -122,7 +122,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="col-xs-9">
 						<div class="page-header">
-							<h1><i class="fa fa-bar-chart-o"></i> 题库管理 </h1>
+							<a class="btn btn-primary" data-toggle="modal" data-target=".history-exampaper-modal"><i class="fa fa-bar-chart-o"></i>题库管理</a>
+									<div class="modal fade history-exampaper-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									    	<div class="modal-header">
+										        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										        <h6 class="modal-title" id="myModalLabel">请选择题库</h6>
+										     </div>
+										     <div class="modal-body">
+										     	<ul>
+										     		<c:forEach items="${fieldList }" var="item">
+										     			<a href="admin/point-list-${item.fieldId }-1">${item.fieldName }</a>
+										     		</c:forEach>
+										     	</ul>
+										     </div>
+										     <div class="modal-footer">
+        										<button type="button" class="btn btn-default" data-dismiss="modal">关闭窗口</button>
+      										 </div>
+									    	
+									    </div>
+									  </div>
+									</div>
 						</div>
 						<div class="page-content row">
 
@@ -139,13 +160,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${fieldList }" var="item">
+										<c:forEach items="${pointList }" var="item">
 											<tr>
 												<td>
-													<input type="checkbox" value="${item.fieldId }">
+													<input type="checkbox" value="${item.pointId }">
 												</td>
-												<td>${item.fieldId }</td>
-												<td>${item.fieldName }</td>
+												<td>${item.pointId }</td>
+												<td>${item.pointName }</td>
 												<td>${item.memo }</td>
 												<td></td>
 											</tr>
@@ -190,5 +211,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
 		<script type="text/javascript" src="resources/chart/morris.js"></script>
 		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
+		
 	</body>
 </html>
