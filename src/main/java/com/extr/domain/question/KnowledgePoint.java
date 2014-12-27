@@ -10,8 +10,23 @@ public class KnowledgePoint {
 	private int pointId;
 	private String pointName;
 	private int fieldId;
+	private String fieldName;
 	private String memo;
+	private boolean removeable;
 	private int state;
+	
+	public boolean isRemoveable() {
+		return removeable;
+	}
+	public void setRemoveable(boolean removeable) {
+		this.removeable = removeable;
+	}
+	public String getFieldName() {
+		return fieldName;
+	}
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
+	}
 	public int getPointId() {
 		return pointId;
 	}

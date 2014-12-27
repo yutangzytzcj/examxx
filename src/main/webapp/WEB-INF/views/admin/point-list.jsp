@@ -131,11 +131,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										        <h6 class="modal-title" id="myModalLabel">请选择题库</h6>
 										     </div>
 										     <div class="modal-body">
-										     	<ul>
+										     	<ul><a href="admin/point-list-0-1">所有题库</a></ul>
 										     		<c:forEach items="${fieldList }" var="item">
-										     			<a href="admin/point-list-${item.fieldId }-1">${item.fieldName }</a>
+										     			<ul><a href="admin/point-list-${item.fieldId }-1">${item.fieldName }</a></ul>
 										     		</c:forEach>
-										     	</ul>
+										     	
 										     </div>
 										     <div class="modal-footer">
         										<button type="button" class="btn btn-default" data-dismiss="modal">关闭窗口</button>
@@ -154,6 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<tr>
 											<td></td>
 											<td>ID</td>
+											<td>知识点名</td>
 											<td>题库名</td>
 											<td>描述</td>
 											<td>操作</td>
@@ -167,8 +168,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												</td>
 												<td>${item.pointId }</td>
 												<td>${item.pointName }</td>
+												<td>${item.fieldName }</td>
 												<td>${item.memo }</td>
-												<td></td>
+												<td>
+													<c:if test="${item.removeable }">
+														<button>删除</button>
+													</c:if>
+												</td>
 											</tr>
 										</c:forEach>
 										

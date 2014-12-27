@@ -418,6 +418,24 @@ public class QuestionController {
 		return "admin/add-point";
 	}
 	
+	@RequestMapping(value = "/admin/delete-field-{fieldId}", method = RequestMethod.GET)
+	public String deleteField(Model model,@PathVariable("fieldId") int fieldId){
+		//TO-DO 严欢完善下
+		List<Integer> idList = new ArrayList<Integer>();
+		idList.add(fieldId);
+		questionService.deleteFieldByIdList(idList);
+		return "";
+	}
+	
+	@RequestMapping(value = "/admin/delete-point-{pointId}", method = RequestMethod.GET)
+	public String deleteKnowledgePoint(Model model,@PathVariable("pointId") int pointId){
+		//TO-DO 严欢完善下
+		List<Integer> idList = new ArrayList<Integer>();
+		idList.add(pointId);
+		questionService.deleteKnowledgePointByIdList(idList);
+		return "";
+	}
+	
 	@RequestMapping(value = "/admin/field-add", method = RequestMethod.POST)
 	public @ResponseBody Message addField(@RequestBody Field field){
 		

@@ -117,4 +117,8 @@ public interface QuestionMapper {
 	public void addField(Field field);
 	
 	public void addKnowledgePoint(KnowledgePoint point);
+	
+	public void deleteFieldByIdList(@Param("array") List<Integer> idList);
+	
+	public void deleteKnowledgePointByIdList(@Param("array") List<Integer> idList);
 }

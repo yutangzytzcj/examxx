@@ -9,6 +9,13 @@ public class Field {
 	private String fieldName;
 	private String memo;
 	private boolean state;
+	private boolean removeable;
+	public boolean isRemoveable() {
+		return removeable;
+	}
+	public void setRemoveable(boolean removeable) {
+		this.removeable = removeable;
+	}
 	public int getFieldId() {
 		return fieldId;
 	}

@@ -213,4 +213,16 @@ public class QuestionServiceImpl implements QuestionService {
 		// TODO Auto-generated method stub
 		questionMapper.addKnowledgePoint(point);
 	}
+
+	@Override
+	public void deleteFieldByIdList(List<Integer> idList) {
+		// TODO Auto-generated method stub
+		questionMapper.deleteFieldByIdList(idList);
+	}
+
+	@Override
+	public void deleteKnowledgePointByIdList(List<Integer> idList) {
+		// TODO Auto-generated method stub
+		questionMapper.deleteKnowledgePointByIdList(idList);
+	}
 }

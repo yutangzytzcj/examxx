@@ -3,6 +3,8 @@ package com.extr.service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.extr.controller.domain.QuestionFilter;
 import com.extr.controller.domain.QuestionImproveResult;
 import com.extr.controller.domain.QuestionQueryResult;
@@ -110,4 +112,16 @@ public interface QuestionService {
 	 * @param point
 	 */
 	public void addKnowledgePoint(KnowledgePoint point);
+	
+	/**
+	 * 删除题库
+	 * @param idList
+	 */
+	public void deleteFieldByIdList(List<Integer> idList);
+	
+	/**
+	 * 删除知识点
+	 * @param idList
+	 */
+	public void deleteKnowledgePointByIdList( List<Integer> idList);
 }

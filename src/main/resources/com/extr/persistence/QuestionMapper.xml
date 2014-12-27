@@ -142,17 +142,22 @@
 
 	<select id="getAllField" resultType="com.extr.domain.question.Field">
 		select field_id
-		fieldId,field_name fieldName,memo,state
-		from et_field
+		fieldId,field_name fieldName,memo,state,
+		case when exists(select 1 from et_knowledge_point m where m.field_id=a.field_id) then 0
+		else 1 end removeable
+		from et_field a
 	</select>
 
 	<select id="getKnowledgePointByFieldId" resultType="com.extr.domain.question.KnowledgePoint">
-		select point_id pointId,point_name pointName,field_id
-		fieldId,memo,state
-		from et_knowledge_point
+		select a.point_id pointId,a.point_name pointName,a.field_id
+		fieldId,a.memo,a.state,b.field_name fieldName,
+		case when exists(select 1 from et_question_2_point m where m.point_id=a.point_id) then 0
+		else 1 end removeable
+		from et_knowledge_point a,et_field b
 		<where>
+			a.field_id=b.field_id
 			<if test="fieldId != 0">
-				field_id = #{fieldId}
+				and a.field_id = #{fieldId}
 			</if>
 		</where>
 	</select>
@@ -310,4 +315,18 @@
 		#{pointName},#{memo},#{state},#{fieldId}
 		)
 	</insert>
+	
+	<delete id="deleteFieldByIdList">
+		delete from et_field where field_id in
+		<foreach collection="array" open="(" close=")" index="index" item="item" separator=",">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<delete id="deleteKnowledgePointByIdList">
+		delete from et_knowledge_point where point_id in
+		<foreach collection="array" open="(" close=")" index="index" item="item" separator=",">
+			#{item}
+		</foreach>
+	</delete>
 </mapper>

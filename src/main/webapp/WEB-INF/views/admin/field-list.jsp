@@ -147,7 +147,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<td>${item.fieldId }</td>
 												<td>${item.fieldName }</td>
 												<td>${item.memo }</td>
-												<td></td>
+												<td>
+													<c:if test="${item.removeable }">
+														<button>删除</button>
+													</c:if>
+												</td>
 											</tr>
 										</c:forEach>
 										
