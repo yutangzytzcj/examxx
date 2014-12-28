@@ -30,6 +30,8 @@ public class CommentController {
 	public @ResponseBody
 	Message getQuestionComments(@PathVariable("questionId") int questionId,
 			@PathVariable("index") int index) {
+		if(index <= 0)
+			index = 1;
 		Message msg = new Message();
 		msg.setMessageInfo("not-has-next");
 		Page<Comment> page = new Page<Comment>();
