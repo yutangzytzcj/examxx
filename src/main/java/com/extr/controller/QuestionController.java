@@ -98,7 +98,7 @@ public class QuestionController {
 		model.addAttribute("fieldList", questionService.getAllField(null));
 
 		model.addAttribute("knowledgeList",
-				questionService.getKnowledgePointByFieldId(fieldId));
+				questionService.getKnowledgePointByFieldId(fieldId,null));
 
 		model.addAttribute("questionTypeList",
 				questionService.getQuestionTypeList());
@@ -152,7 +152,7 @@ public class QuestionController {
 		model.addAttribute("fieldList", questionService.getAllField(null));
 
 		model.addAttribute("knowledgeList",
-				questionService.getKnowledgePointByFieldId(fieldId));
+				questionService.getKnowledgePointByFieldId(fieldId,null));
 
 		model.addAttribute("questionTypeList",
 				questionService.getQuestionTypeList());
@@ -201,7 +201,7 @@ public class QuestionController {
 		Message message = new Message();
 		HashMap<Integer, String> pointMap = new HashMap<Integer, String>();
 		List<KnowledgePoint> pointList = questionService
-				.getKnowledgePointByFieldId(fieldId);
+				.getKnowledgePointByFieldId(fieldId,null);
 		for (KnowledgePoint point : pointList) {
 			pointMap.put(point.getPointId(), point.getPointName());
 		}
@@ -381,7 +381,7 @@ public class QuestionController {
 		
 		Page<Field> page = new Page<Field>();
 		page.setPageNo(index);
-		page.setPageSize(20);
+		page.setPageSize(1);
 		List<Field> fieldList = questionService.getAllField(page);
 		String pageStr = PagingUtil.getPageBtnlink(index,
 				page.getTotalPage());
@@ -395,11 +395,11 @@ public class QuestionController {
 		
 		Page<KnowledgePoint> page = new Page<KnowledgePoint>();
 		page.setPageNo(index);
-		page.setPageSize(2);
+		page.setPageSize(1);
 		
 		List<Field> fieldList = questionService.getAllField(null);
 		
-		List<KnowledgePoint> pointList = questionService.getKnowledgePointByFieldId(fieldId);
+		List<KnowledgePoint> pointList = questionService.getKnowledgePointByFieldId(fieldId,page);
 		String pageStr = PagingUtil.getPageBtnlink(index,
 				page.getTotalPage());
 		model.addAttribute("pointList", pointList);

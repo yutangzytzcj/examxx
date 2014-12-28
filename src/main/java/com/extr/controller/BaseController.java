@@ -142,10 +142,10 @@ public class BaseController {
 		Map<String,List<QuestionImproveResult>> classifyMap = new HashMap<String,List<QuestionImproveResult>>();
 		UserQuestionHistory history = new UserQuestionHistory();
 		if(userInfo instanceof String){
-			kl = questionService.getKnowledgePointByFieldId(1);
+			kl = questionService.getKnowledgePointByFieldId(1,null);
 		}else{
-			List<KnowledgePoint> kpz = questionService.getKnowledgePointByFieldId(1);
-			kl = questionService.getKnowledgePointByFieldId( ((UserInfo)userInfo).getFieldId());
+			List<KnowledgePoint> kpz = questionService.getKnowledgePointByFieldId(1,null);
+			kl = questionService.getKnowledgePointByFieldId( ((UserInfo)userInfo).getFieldId(),null);
 			
 			kpz.addAll(kl);
 			kl = kpz;

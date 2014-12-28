@@ -42,8 +42,8 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public List<KnowledgePoint> getKnowledgePointByFieldId(int FieldId) {
-		return questionMapper.getKnowledgePointByFieldId(FieldId);
+	public List<KnowledgePoint> getKnowledgePointByFieldId(int FieldId,Page<KnowledgePoint> page) {
+		return questionMapper.getKnowledgePointByFieldId(FieldId,page);
 	}
 
 	@Override

@@ -48,11 +48,11 @@ public class UserCenterController {
 				.getUserQuestionHistoryByUserId(userInfo.getUserid());
 		model.addAttribute("lastLoginTime", userInfo.getLastLoginTime());
 		List<KnowledgePoint> pointList = questionService
-				.getKnowledgePointByFieldId(userInfo.getFieldId());
+				.getKnowledgePointByFieldId(userInfo.getFieldId(),null);
 		// 岗位通用id=1
 		List<KnowledgePoint> pointList1 = new ArrayList<KnowledgePoint>();
 		if (userInfo.getFieldId() != 1)
-			pointList1 = questionService.getKnowledgePointByFieldId(1);
+			pointList1 = questionService.getKnowledgePointByFieldId(1,null);
 		List<Integer> pointIdList = new ArrayList<Integer>();
 		List<StatisticsResult> srList = new ArrayList<StatisticsResult>();
 		Map<Integer, Map<Integer, QuestionHistory>> history;
@@ -150,11 +150,11 @@ public class UserCenterController {
 				.getUserQuestionHistoryByUserId(userInfo.getUserid());
 		model.addAttribute("lastLoginTime", userInfo.getLastLoginTime());
 		List<KnowledgePoint> pointList = questionService
-				.getKnowledgePointByFieldId(userInfo.getFieldId());
+				.getKnowledgePointByFieldId(userInfo.getFieldId(),null);
 		// 岗位通用id=1
 		List<KnowledgePoint> pointList1 = new ArrayList<KnowledgePoint>();
 		if (userInfo.getFieldId() != 1)
-			pointList1 = questionService.getKnowledgePointByFieldId(1);
+			pointList1 = questionService.getKnowledgePointByFieldId(1,null);
 		List<Integer> pointIdList = new ArrayList<Integer>();
 		// List<StatisticsResult> srList = new ArrayList<StatisticsResult>();
 		Map<Integer, Map<Integer, QuestionHistory>> history;

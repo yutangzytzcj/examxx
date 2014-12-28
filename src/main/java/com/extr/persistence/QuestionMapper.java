@@ -24,7 +24,7 @@ public interface QuestionMapper {
 	List<Field> getAllField(@Param("page") Page<Field> page);
 
 	List<KnowledgePoint> getKnowledgePointByFieldId(
-			@Param("fieldId") int fieldId);
+			@Param("fieldId") int fieldId,@Param("page") Page<KnowledgePoint> page);
 
 	List<QuestionQueryResult> getQuestionAnalysisListByIdList(
 			@Param("array") List<Integer> idList);

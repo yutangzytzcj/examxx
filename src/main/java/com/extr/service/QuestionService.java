@@ -29,7 +29,7 @@ public interface QuestionService {
 	 */
 	List<Field> getAllField(Page<Field> page);
 
-	List<KnowledgePoint> getKnowledgePointByFieldId(int FieldId);
+	List<KnowledgePoint> getKnowledgePointByFieldId(int FieldId,Page<KnowledgePoint> page);
 
 	List<Question> getQuestionList(Page<Question> pageModel, QuestionFilter qf);
 
