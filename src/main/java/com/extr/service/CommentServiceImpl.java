@@ -25,8 +25,13 @@ public class CommentServiceImpl implements CommentService {
 	public void addComment(Comment comment) {
 		// TODO Auto-generated method stub
 		try{
-			int index = commentMapper.getMaxCommentIndexByQuestionId(comment.getQuestionId());
-			comment.setIndexId(index + 1);
+			Object index = commentMapper.getMaxCommentIndexByQuestionId(comment.getQuestionId());
+			int i = 0;
+			if(index == null)
+				i = 0;
+			else 
+				i = (Integer) index;
+			comment.setIndexId(i + 1);
 			commentMapper.addComment(comment);
 		}catch(Exception e){
 			throw new RuntimeException(e);

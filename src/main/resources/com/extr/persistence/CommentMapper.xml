@@ -15,7 +15,7 @@
 		and a.question_id=#{questionId}
 	</select>
 	
-	<select id="getMaxCommentIndexByQuestionId" resultType="Integer">
+	<select id="getMaxCommentIndexByQuestionId" resultType="java.lang.Integer">
 		select max(index_id) from et_comment where question_id=#{questionId}
 	</select>
 	

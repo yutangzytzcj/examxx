@@ -1,6 +1,12 @@
 package com.extr.controller;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+
+
+
+
 
 
 
@@ -15,6 +21,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,9 +29,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.extr.controller.domain.Comments;
 import com.extr.controller.domain.ExamFinishParam;
 import com.extr.controller.domain.Message;
 import com.extr.domain.question.Comment;
+import com.extr.security.UserInfo;
 import com.extr.service.CommentService;
 import com.extr.util.Page;
 
@@ -47,9 +56,14 @@ public class CommentController {
 		page.setPageSize(10 * index);
 		try{
 			List<Comment> commentList = commentService.getCommentByQuestionId(questionId, page);
+			ArrayList<Comment> cList = new ArrayList<Comment>();
 			Comments c = new Comments();
-			c.setComments(commentList);
-			c.setSize(page.getTotalRecord());
+			int i = 0;
+			for(Comment comment : commentList){
+				cList.add(comment);
+			}
+				
+			
 			if(page.getTotalRecord() > page.getPageSize())
 				msg.setMessageInfo("has-next");
 			msg.setObject(c);
@@ -66,10 +80,14 @@ public class CommentController {
 	public @ResponseBody
 	Message submitComment(@RequestBody Comment comment, HttpServletRequest request) {
 		Message msg = new Message();
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
 		try{
+			comment.setUserId(userInfo.getUserid());
 			commentService.addComment(comment);
 			
 		}catch(Exception e){
+			e.printStackTrace();
 			msg.setResult(e.getClass().getName());
 		}
 		return msg;
@@ -77,29 +95,5 @@ public class CommentController {
 	}
 	
 	
-	@XmlRootElement(name = "Comments")
-	@XmlAccessorType (XmlAccessType.FIELD)
-	public class Comments{
-		
-		@XmlElement(name = "comment")
-		private List<Comment> comments = null;
-		@XmlElement(name = "size")
-		private int size;
-		public int getSize() {
-			return size;
-		}
-
-		public void setSize(int size) {
-			this.size = size;
-		}
-
-		public List<Comment> getComments() {
-			return comments;
-		}
-
-		public void setComments(List<Comment> comments) {
-			this.comments = comments;
-		}
-		
-	}
+	
 }
