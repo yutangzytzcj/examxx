@@ -1,6 +1,7 @@
 $(function() {
 	comment.initial();
 	comment.queryComment();
+	comment.bindShowMore();
 });
 
 var comment = {
@@ -51,10 +52,17 @@ var comment = {
 			return false;
 		});
 	},
-	
+	bindShowMore : function bindShowMore(){
+		var show_more = $("#show_more_btn");
+		show_more.click(function(){
+			comment.queryComment();
+			return false;
+		});
+	},
 	queryComment : function queryComment(){
 		this.clearComment();
 		var thisquestion  = $(".question:visible");
+		var idx = $("#idx_id").val();
 		$.ajax({
 			headers : {
 				'Accept' : 'application/json',
@@ -62,7 +70,7 @@ var comment = {
 			},
 			async:true,
 			type : "GET",
-			url : "student/comment-list/" + $(thisquestion).find(".question-id").text() + "/0",
+			url : "student/comment-list/" + $(thisquestion).find(".question-id").text() + "/" + idx,
 			success : function(message, tst, jqXHR) {
 				if (!util.checkSessionOut(jqXHR))
 					return false;
@@ -71,6 +79,8 @@ var comment = {
 					
 					var html = comment.generatComment(message.object.comments);
 					comment.appendHtml(html,message.object.size);
+					//批次加一
+					$("idx_id").val(idx + 1);
 				} else {
 					util.error("读取失败请稍后尝试:" + message.result);
 				}
