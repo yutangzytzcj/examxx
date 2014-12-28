@@ -395,7 +395,7 @@ public class QuestionController {
 		
 		Page<KnowledgePoint> page = new Page<KnowledgePoint>();
 		page.setPageNo(index);
-		page.setPageSize(20);
+		page.setPageSize(2);
 		
 		List<Field> fieldList = questionService.getAllField(null);
 		
@@ -404,6 +404,7 @@ public class QuestionController {
 				page.getTotalPage());
 		model.addAttribute("pointList", pointList);
 		model.addAttribute("fieldList", fieldList);
+		model.addAttribute("fieldId", fieldId);
 		model.addAttribute("pageStr", pageStr);
 		return "admin/point-list";
 	}
@@ -419,21 +420,21 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value = "/admin/delete-field-{fieldId}", method = RequestMethod.GET)
-	public String deleteField(Model model,@PathVariable("fieldId") int fieldId){
-		//TO-DO 严欢完善下
+	public @ResponseBody Message deleteField(Model model,@PathVariable("fieldId") int fieldId){
+		//TODO 严欢完善下
 		List<Integer> idList = new ArrayList<Integer>();
 		idList.add(fieldId);
 		questionService.deleteFieldByIdList(idList);
-		return "";
+		return new Message();
 	}
 	
 	@RequestMapping(value = "/admin/delete-point-{pointId}", method = RequestMethod.GET)
-	public String deleteKnowledgePoint(Model model,@PathVariable("pointId") int pointId){
-		//TO-DO 严欢完善下
+	public @ResponseBody Message deleteKnowledgePoint(Model model,@PathVariable("pointId") int pointId){
+		//TO.DO 严欢完善下
 		List<Integer> idList = new ArrayList<Integer>();
 		idList.add(pointId);
 		questionService.deleteKnowledgePointByIdList(idList);
-		return "";
+		return new Message();
 	}
 	
 	@RequestMapping(value = "/admin/field-add", method = RequestMethod.POST)

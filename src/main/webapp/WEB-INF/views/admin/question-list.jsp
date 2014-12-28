@@ -111,19 +111,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul class="nav default-sidenav">
 							<li class="active">
 								<a href="admin/question-list"> <i class="fa fa-list-ul"></i> 试题管理 </a>
-
 							</li>
 							<li>
 								<a href="admin/question-add"> <i class="fa fa-pencil-square-o"></i> 添加试题 </a>
-
 							</li>
 							<li>
 								<a href="admin/question-import"> <i class="fa fa-cloud-upload"></i> 导入试题 </a>
-
 							</li>
-
 						</ul>
-
 					</div>
 					<div class="col-xs-9">
 						<div class="page-header">
@@ -135,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 								<dl id="question-filter-field">
 									<dt>
-										专业：
+										题库：
 									</dt>
 									<dd>
 										<c:choose>
@@ -146,7 +141,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<span data-id="0">全部</span>
 											</c:otherwise>
 										</c:choose>
-										
 										<c:forEach items="${fieldList}" var="field">
 											<c:choose>
 												<c:when test="${questionFilter.fieldId == field.fieldId }">
@@ -161,7 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</dl>
 								<dl id="question-filter-knowledge">
 									<dt>
-										知识类：
+										知识分类：
 									</dt>
 									<dd>
 										<c:choose>

@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>试题管理</title>
+		<title>题库管理</title>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="keywords" content="">
 		<link rel="shortcut icon" href="<%=basePath%>resources/images/favicon.ico" />
@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<td>${item.memo }</td>
 												<td>
 													<c:if test="${item.removeable }">
-														<button>删除</button>
+														<button class="delete-btn" data-id="${item.fieldId }">删除</button>
 													</c:if>
 												</td>
 											</tr>
@@ -194,8 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/js/jquery/jquery-1.9.0.min.js"></script>
 		<!-- Bootstrap JS -->
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
-		<script type="text/javascript" src="resources/chart/morris.js"></script>
-		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
+		<script type="text/javascript" src="resources/js/all.js"></script>
+		<script type="text/javascript" src="resources/js/question-lib.js"></script>
 	</body>
 </html>

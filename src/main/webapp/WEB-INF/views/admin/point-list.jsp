@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>试题管理</title>
+		<title>知识点管理</title>
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="keywords" content="">
 		<link rel="shortcut icon" href="<%=basePath%>resources/images/favicon.ico" />
@@ -122,31 +122,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="col-xs-9">
 						<div class="page-header">
-							<a class="btn btn-primary" data-toggle="modal" data-target=".history-exampaper-modal"><i class="fa fa-bar-chart-o"></i>题库管理</a>
-									<div class="modal fade history-exampaper-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-									  <div class="modal-dialog">
-									    <div class="modal-content">
-									    	<div class="modal-header">
-										        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										        <h6 class="modal-title" id="myModalLabel">请选择题库</h6>
-										     </div>
-										     <div class="modal-body">
-										     	<ul><a href="admin/point-list-0-1">所有题库</a></ul>
-										     		<c:forEach items="${fieldList }" var="item">
-										     			<ul><a href="admin/point-list-${item.fieldId }-1">${item.fieldName }</a></ul>
-										     		</c:forEach>
-										     	
-										     </div>
-										     <div class="modal-footer">
-        										<button type="button" class="btn btn-default" data-dismiss="modal">关闭窗口</button>
-      										 </div>
-									    	
-									    </div>
-									  </div>
-									</div>
+							<h1> <i class="fa fa-bar-chart-o"></i> 知识点管理 </h1>
 						</div>
 						<div class="page-content row">
-
+							<div id="question-filter">
+								<dl id="question-filter-field">
+									<dt>
+										题库：
+									</dt>
+									<dd>	
+										<c:choose>
+											<c:when test="${fieldId == 0 }">
+												<span data-id="0" class="label label-info">全部</span>
+											</c:when>
+											<c:otherwise>
+												<span data-id="0">全部</span>
+											</c:otherwise>
+										</c:choose>
+										
+										
+										<c:forEach items="${fieldList }" var="item">
+										
+											<c:choose>
+												<c:when test="${fieldId == item.fieldId }">
+													<span data-id="${item.fieldId}" class="label label-info">${item.fieldName}</span>
+												</c:when>
+												<c:otherwise>
+													<span data-id="${item.fieldId }">${item.fieldName }</span>
+												</c:otherwise>
+											</c:choose>
+											
+										</c:forEach>
+									</dd>
+								</dl>
+								<div class="page-link-content">
+									<ul class="pagination pagination-sm">${pageStr}</ul>
+								</div>
+							</div>
+							
 							
 							<div id="field-list">
 								<table class="table-striped table">
@@ -174,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<td>${item.memo }</td>
 												<td>
 													<c:if test="${item.removeable }">
-														<button>删除</button>
+														<button class="delete-btn" data-id="${item.pointId }">删除</button>
 													</c:if>
 												</td>
 											</tr>
@@ -216,9 +229,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/js/jquery/jquery-1.9.0.min.js"></script>
 		<!-- Bootstrap JS -->
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
-		<script type="text/javascript" src="resources/chart/morris.js"></script>
-		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
+		<script type="text/javascript" src="resources/js/all.js"></script>
+		<script type="text/javascript" src="resources/js/point-list.js"></script>
 		
 	</body>
 </html>
