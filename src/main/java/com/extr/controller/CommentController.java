@@ -62,7 +62,7 @@ public class CommentController {
 			for(Comment comment : commentList){
 				cList.add(comment);
 			}
-				
+			c.setComments(cList);
 			
 			if(page.getTotalRecord() > page.getPageSize())
 				msg.setMessageInfo("has-next");
