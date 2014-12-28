@@ -467,13 +467,18 @@ a.navi-item-error{
 
 
 /** comment **/
+.comment-list{
+	padding:0 26px 26px 26px;
+	padding-left: 26px !important;
+	
+}
 .comment-user-img{
 	width:50px;
 }
 
 .comment-list li.comment-list-item{
-	padding:20px;
-	border-bottom: 1px dotted rgb(206, 206, 206);
+	border-top: 1px dotted rgb(206, 206, 206);
+	padding:20px 0;
 }
 .comment-user-container{
 	height:50px;
@@ -498,9 +503,17 @@ a.navi-item-error{
 }
 
 .comment-form{
-	padding:20px;
+	padding:26px;
 }
 
+.comment-form textarea{
+	border:1px solid #BBB;
+}
+
+.comment-total{
+	padding-left:26px;
+	font-weight:bolder;
+}
 
 /** 强化练习 **/
 

@@ -158,7 +158,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<ul id="exampaper-body">
 									${questionStr }
-
 								</ul>
 								<div id="exampaper-footer">
 										
@@ -173,7 +172,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</button>
 										<button class="btn-warning btn" id="submit-q-btn" style="width:160px;float:right;">
 												<i class="fa fa-check-circle-o"></i>提交答案
-
 										</button>
 									</div>
 									<div id="question-navi">
@@ -183,17 +181,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</div>
 										<div id="question-navi-content" ></div>
 									</div>
-
 								</div>
 							</div>
-							<div class="expand-bk-content" id="bk-conent-comment" style="margin-top:40px;display:none;">
+							<div class="expand-bk-content" id="bk-conent-comment" style="margin-top:40px;">
 								<div id="comment-title" style="margin-bottom:15px;">
 									<i class="fa fa-comments"></i>
 									<span> 学员评论 </span>
 
 								</div>
+								<form class="comment-form">
+									<textarea rows="" cols="" style="width:100%;height:95px;"></textarea>
+									<input class="btn btn-primary" type="submit" value="发表评论">
+								</form>
+								<div class="comment-total"><span class="comment-total-num">18</span>条评论</div>
 								<ul class="comment-list">
-									
 									<li class="comment-list-item">
 										<div class="comment-user-container">
 											<div >
@@ -234,10 +235,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</li>
 									
 								</ul>
-								<form class="comment-form">
-									<textarea rows="" cols="" style="width:100%;height:95px;"></textarea>
-									<input class="btn btn-primary" type="submit" value="发表评论">
-								</form>
+								
 								
 							</div>
 
@@ -274,6 +272,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="resources/js/all.js?v=0712"></script>
 		<script type="text/javascript" src="resources/js/practice-improve-qh.js"></script>
+		<script type="text/javascript" src="resources/js/comment.js"></script>
 
 	</body>
 </html>
