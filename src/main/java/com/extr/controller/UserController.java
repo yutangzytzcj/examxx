@@ -101,7 +101,9 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/user-register" }, method = RequestMethod.GET)
-	public String registerPage() {
+	public String registerPage(Model model) {
+		List<Field> fieldList = questionService.getAllField(null);
+		model.addAttribute("fieldList", fieldList);
 		return "register";
 	}
 

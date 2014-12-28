@@ -123,7 +123,7 @@ public class UserCenterController {
 				sr.setRightRate(rightRate);
 				sr.setFinishRate(finishRate);
 			}
-			sr.setAmount(pointStatisticMap.get(kp.getPointId()));
+			sr.setAmount(pointStatisticMap.get(kp.getPointId()) == null ? 0 : pointStatisticMap.get(kp.getPointId()));
 			srList.add(sr);
 		}
 

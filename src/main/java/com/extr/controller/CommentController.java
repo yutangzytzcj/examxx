@@ -35,6 +35,7 @@ public class CommentController {
 			if(page.getTotalRecord() > page.getPageSize())
 				msg.setMessageInfo("has-next");
 			msg.setObject(commentList);
+			msg.setGeneratedId(page.getTotalRecord());
 		}catch(Exception e){
 			msg.setResult(e.getClass().getName());
 		}

@@ -150,9 +150,9 @@ String basePath = request.getScheme() + "://"
 										<div class="col-md-9">
 											<select class="form-control" id="job-type-input">
 												<option value="-1">--请选择--</option>
-												<option value="2">窗口服务</option>
-												<option value="3">业报扩装</option>
-												<option value="4">电能计量</option>
+												<c:forEach items="${fieldList }" var="item">
+													<option value="${item.fieldId }">${item.fieldName }</option>
+												</c:forEach>
 											</select>
 											<span class="form-message"></span>
 										</div>
