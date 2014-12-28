@@ -40,6 +40,7 @@ public class CommentController {
 			List<Comment> commentList = commentService.getCommentByQuestionId(questionId, page);
 			Comments c = new Comments();
 			c.setComments(commentList);
+			c.setSize(page.getTotalRecord());
 			if (page.getTotalRecord() > page.getPageSize())
 				msg.setMessageInfo("has-next");
 			msg.setObject(c);

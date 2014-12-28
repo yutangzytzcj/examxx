@@ -13,6 +13,7 @@
 		a.re_id reId,a.create_time createTime from et_comment a,et_user b
 		where a.user_id=b.id
 		and a.question_id=#{questionId}
+		order by a.create_time desc
 	</select>
 	
 	<select id="getMaxCommentIndexByQuestionId" resultType="java.lang.Integer">
