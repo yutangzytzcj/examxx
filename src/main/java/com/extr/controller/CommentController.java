@@ -34,8 +34,15 @@ public class CommentController {
 		Message msg = new Message();
 		msg.setMessageInfo("not-has-next");
 		Page<Comment> page = new Page<Comment>();
-		page.setPageNo(index);
-		page.setPageSize(5);
+		if(index == 1){
+			page.setPageNo(index);
+			page.setPageSize(6);
+		}else{
+			index = index + 2;
+			page.setPageNo(index);
+			page.setPageSize(2);
+		}
+		
 		try {
 			List<Comment> commentList = commentService.getCommentByQuestionId(questionId, page);
 			Comments c = new Comments();
