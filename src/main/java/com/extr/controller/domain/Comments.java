@@ -14,7 +14,6 @@ import com.extr.domain.question.Comment;
 @XmlRootElement(name = "Comments")
 public class Comments{
 	
-	@XmlElementWrapper(name="c")
 	@XmlElement(name = "comment")
 	private ArrayList<Comment> comments = null;
 	@XmlElement(name = "size")
