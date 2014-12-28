@@ -53,9 +53,8 @@ var comment = {
 	},
 	
 	queryComment : function queryComment(){
+		this.clearComment();
 		var thisquestion  = $(".question:visible");
-		
-		
 		$.ajax({
 			headers : {
 				'Accept' : 'application/json',
@@ -68,9 +67,10 @@ var comment = {
 				if (!util.checkSessionOut(jqXHR))
 					return false;
 				if (message.result == "success") {
-					
 					util.success("读取评论列表成功");
 					
+					var html = comment.generatComment(message.object.comments);
+					comment.appendHtml(html,message.object.size);
 				} else {
 					util.error("读取失败请稍后尝试:" + message.result);
 				}
@@ -79,6 +79,35 @@ var comment = {
 				util.error("读取失败请稍后尝试");
 			}
 		});
+	},
+	
+	appendHtml : function appendHtml(html,size){
+		$(".comment-list").html(html);
+		$(".comment-total-num").text(size);
+	},
+	
+	clearComment : function clearComment(){
+		$(".comment-list").empty();
+	},
+
+	generatComment : function generatComment(commentList){
+		if(commentList.length == 0)return "";
+		var html = "";
+		
+		for(var i = 0 ; i < commentList.length; i++){
+			html = html + "<li class=\"comment-list-item\">";
+			html = html + "<div class=\"comment-user-container\">";
+			html = html + "<div><img src=\"resources/images/photo.jpg\" class=\"comment-user-img\"></div>";
+			html = html + "<div class=\"comment-user-info\"><div>" + commentList[i].username + "</div>";
+			html = html + "<div class=\"comment-date\">	" + commentList[i].createTime + "</div>";
+			html = html + 	"</div>";
+			html = html + "</div>";
+			html = html + "<p class=\"comment-user-text\">" + commentList[i].contentMsg + "</p>";
+			html = html + "</li>";
+		}
+		
+		
+		return html;
 	}
 };
 

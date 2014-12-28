@@ -29,7 +29,6 @@ import com.extr.controller.domain.QuestionQueryResult;
 import com.extr.domain.question.Field;
 import com.extr.domain.question.KnowledgePoint;
 import com.extr.domain.question.Question;
-import com.extr.domain.user.User;
 import com.extr.file.util.FileUploadUtil;
 import com.extr.security.UserInfo;
 import com.extr.service.ExamService;
@@ -46,9 +45,6 @@ public class QuestionController {
 	private QuestionService questionService;
 	@Autowired
 	private ExamService examService;
-
-	private static final String SUCCESS_Message = "success";
-	private static final String failed_Message = "failed";
 
 	/**
 	 * 题库页面
@@ -197,7 +193,6 @@ public class QuestionController {
 	@RequestMapping(value = "/admin/get-knowledge-point", method = RequestMethod.POST)
 	public @ResponseBody
 	Message getQuestionPointByFieldId(@RequestBody int fieldId) {
-
 		Message message = new Message();
 		HashMap<Integer, String> pointMap = new HashMap<Integer, String>();
 		List<KnowledgePoint> pointList = questionService

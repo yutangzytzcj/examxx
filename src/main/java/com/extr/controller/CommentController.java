@@ -1,24 +1,8 @@
 package com.extr.controller;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 
-
-
-
-
-
-
-
-
-
-
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.extr.controller.domain.Comments;
-import com.extr.controller.domain.ExamFinishParam;
 import com.extr.controller.domain.Message;
 import com.extr.domain.question.Comment;
+import com.extr.domain.question.Comments;
 import com.extr.security.UserInfo;
 import com.extr.service.CommentService;
 import com.extr.util.Page;
@@ -45,55 +28,44 @@ public class CommentController {
 
 	@RequestMapping(value = "student/comment-list/{questionId}/{index}", method = RequestMethod.GET)
 	public @ResponseBody
-	Message getQuestionComments(@PathVariable("questionId") int questionId,
-			@PathVariable("index") int index) {
-		if(index <= 0)
+	Message getQuestionComments(@PathVariable("questionId") int questionId, @PathVariable("index") int index) {
+		if (index <= 0)
 			index = 1;
 		Message msg = new Message();
 		msg.setMessageInfo("not-has-next");
 		Page<Comment> page = new Page<Comment>();
 		page.setPageNo(1);
 		page.setPageSize(10 * index);
-		try{
+		try {
 			List<Comment> commentList = commentService.getCommentByQuestionId(questionId, page);
-			ArrayList<Comment> cList = new ArrayList<Comment>();
 			Comments c = new Comments();
-			int i = 0;
-			for(Comment comment : commentList){
-				cList.add(comment);
-			}
-			c.setComments(cList);
-			
-			if(page.getTotalRecord() > page.getPageSize())
+			c.setComments(commentList);
+			if (page.getTotalRecord() > page.getPageSize())
 				msg.setMessageInfo("has-next");
 			msg.setObject(c);
-			
-		}catch(Exception e){
+		} catch (Exception e) {
 			msg.setResult(e.getClass().getName());
 			e.printStackTrace();
 		}
-		
+
 		return msg;
 	}
-	
+
 	@RequestMapping(value = "student/submit-comment", method = RequestMethod.POST)
 	public @ResponseBody
 	Message submitComment(@RequestBody Comment comment, HttpServletRequest request) {
 		Message msg = new Message();
-		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-		try{
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		try {
 			comment.setUserId(userInfo.getUserid());
 			commentService.addComment(comment);
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			msg.setResult(e.getClass().getName());
 		}
 		return msg;
-		
+
 	}
-	
-	
-	
+
 }

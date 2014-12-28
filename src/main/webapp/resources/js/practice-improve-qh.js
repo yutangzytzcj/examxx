@@ -500,6 +500,7 @@ var examing = {
 				$(allQuestion[thisindex - 1]).show();
 				$(".qni-selected").removeClass("qni-selected");
 				$($("a.question-navi-item")[thisindex - 1]).addClass("qni-selected");
+				comment.queryComment();
 			}
 		});
 		
@@ -516,6 +517,7 @@ var examing = {
 				$(allQuestion[thisindex + 1]).show();
 				$(".qni-selected").removeClass("qni-selected");
 				$($("a.question-navi-item")[thisindex + 1]).addClass("qni-selected");
+				comment.queryComment();
 			}
 		});
 	},

@@ -2,10 +2,6 @@ package com.extr.controller.domain;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class Message implements Serializable {
 
 	private static final long serialVersionUID = -2999571571280318844L;

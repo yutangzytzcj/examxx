@@ -1,12 +1,13 @@
 package com.extr.domain.question;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-public class Comment {
-
+public class Comment implements Serializable  {
+	
+	private static final long serialVersionUID = 304471288989898758L;
 	private int commentId;
 	private int questionId;
 	private int indexId;
