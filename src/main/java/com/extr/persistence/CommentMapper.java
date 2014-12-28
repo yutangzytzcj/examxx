@@ -22,5 +22,14 @@ import com.extr.util.Page;
  */
 public interface CommentMapper {
 
-	List<Comment> getCommentByQuestionId(@Param("questionId") int questionId,@Param("page") Page<Comment> page);
+	List<Comment> getCommentByQuestionId(@Param("questionId") int questionId,
+			@Param("page") Page<Comment> page);
+	
+	/**
+	 * 添加评论
+	 * @param comment
+	 */
+	public void addComment(Comment comment);
+	
+	public Integer getMaxCommentIndexByQuestionId(@Param("questionId") int questionId);
 }

@@ -14,6 +14,16 @@
 		where a.user_id=b.id
 		and a.question_id=#{questionId}
 	</select>
-
-
+	
+	<select id="getMaxCommentIndexByQuestionId" resultType="Integer">
+		select max(index_id) from et_comment where question_id=#{questionId}
+	</select>
+	
+	<insert id="addComment" useGeneratedKeys="true"
+		keyProperty="commentId" parameterType="com.extr.domain.question.Comment">
+		insert into et_comment(question_id,index_id,user_id,content_msg,quoto_id,re_id)
+		values(
+		#{questionId},#{indexId},#{userId},#{contentMsg},#{quotoId},#{reId}
+		)
+	</insert>
 </mapper>

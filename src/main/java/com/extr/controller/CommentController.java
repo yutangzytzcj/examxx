@@ -51,9 +51,14 @@ public class CommentController {
 	@RequestMapping(value = "student/submit-comment", method = RequestMethod.POST)
 	public @ResponseBody
 	Message submitComment(@RequestBody Comment comment, HttpServletRequest request) {
-		
-		
-		return new Message();
+		Message msg = new Message();
+		try{
+			commentService.addComment(comment);
+			
+		}catch(Exception e){
+			msg.setResult(e.getClass().getName());
+		}
+		return msg;
 		
 	}
 }
