@@ -228,11 +228,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</p>
 										
 									</li>
-									<li>
-										<input type="hidden" id="idx_hidden" value="1">
-										<button id="show_more_btn">更多评论</button>
-									</li>
 								</ul>
+								<div>
+									<input type="hidden" id="idx_hidden" value="1">
+									<button id="show_more_btn">更多评论</button>
+								</div>
 								<form class="comment-form">
 									<textarea rows="" cols="" style="width:100%;height:95px;"></textarea>
 									<input class="btn btn-primary" type="submit" value="发表评论">

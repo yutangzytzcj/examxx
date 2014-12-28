@@ -62,7 +62,7 @@ var comment = {
 	queryComment : function queryComment(){
 		this.clearComment();
 		var thisquestion  = $(".question:visible");
-		var idx = $("#idx_id").val();
+		var idx = $("#idx_hidden").val();
 		$.ajax({
 			headers : {
 				'Accept' : 'application/json',

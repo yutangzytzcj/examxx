@@ -233,12 +233,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</p>
 										
 									</li>
-									<li>
-										<input type="hidden" id="idx_hidden" value="1">
-										<button id="show_more_btn">更多评论</button>
-									</li>
 								</ul>
-								
+								<div>
+									<input type="hidden" id="idx_hidden" value="1">
+									<button id="show_more_btn">更多评论</button>
+								</div>
 								
 							</div>
 
