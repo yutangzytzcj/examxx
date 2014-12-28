@@ -5,7 +5,7 @@
 <mapper namespace="com.extr.persistence.CommentMapper">
 
 
-	<select id="getCommentByQuestionId" resultType="com.extr.domain.user.Comment">
+	<select id="getCommentByQuestionId" resultType="com.extr.domain.question.Comment">
 		select
 		a.comment_id commentId,a.question_id questionId,a.index_id indexId,
 		a.user_id userId,b.username username,a.content_msg
