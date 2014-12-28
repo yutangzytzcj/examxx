@@ -49,10 +49,11 @@ public class CommentController {
 			List<Comment> commentList = commentService.getCommentByQuestionId(questionId, page);
 			Comments c = new Comments();
 			c.setComments(commentList);
+			c.setSize(page.getTotalRecord());
 			if(page.getTotalRecord() > page.getPageSize())
 				msg.setMessageInfo("has-next");
 			msg.setObject(c);
-			msg.setGeneratedId(page.getTotalRecord());
+			
 		}catch(Exception e){
 			msg.setResult(e.getClass().getName());
 			e.printStackTrace();
@@ -82,6 +83,15 @@ public class CommentController {
 		
 		@XmlElement(name = "comment")
 		private List<Comment> comments = null;
+		@XmlElement(name = "size")
+		private int size;
+		public int getSize() {
+			return size;
+		}
+
+		public void setSize(int size) {
+			this.size = size;
+		}
 
 		public List<Comment> getComments() {
 			return comments;
