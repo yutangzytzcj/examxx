@@ -45,6 +45,7 @@ public class CommentController {
 			msg.setGeneratedId(page.getTotalRecord());
 		}catch(Exception e){
 			msg.setResult(e.getClass().getName());
+			e.printStackTrace();
 		}
 		
 		return msg;
