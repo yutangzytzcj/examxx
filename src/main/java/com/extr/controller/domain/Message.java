@@ -1,6 +1,8 @@
 package com.extr.controller.domain;
 
 import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -10,6 +12,7 @@ public class Message implements Serializable {
 	private String result = "success";
 	private int generatedId;
 	private String messageInfo;
+	
 	private Object object;
 	
 	public Object getObject() {

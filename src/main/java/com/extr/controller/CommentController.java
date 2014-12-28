@@ -4,7 +4,15 @@ import java.util.List;
 
 
 
+
+
+
+
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,9 +47,11 @@ public class CommentController {
 		page.setPageSize(10 * index);
 		try{
 			List<Comment> commentList = commentService.getCommentByQuestionId(questionId, page);
+			Comments c = new Comments();
+			c.setComments(commentList);
 			if(page.getTotalRecord() > page.getPageSize())
 				msg.setMessageInfo("has-next");
-			msg.setObject(commentList);
+			msg.setObject(c);
 			msg.setGeneratedId(page.getTotalRecord());
 		}catch(Exception e){
 			msg.setResult(e.getClass().getName());
@@ -62,6 +72,24 @@ public class CommentController {
 			msg.setResult(e.getClass().getName());
 		}
 		return msg;
+		
+	}
+	
+	
+	@XmlRootElement(name = "Comments")
+	@XmlAccessorType (XmlAccessType.FIELD)
+	public class Comments{
+		
+		@XmlElement(name = "comment")
+		private List<Comment> comments = null;
+
+		public List<Comment> getComments() {
+			return comments;
+		}
+
+		public void setComments(List<Comment> comments) {
+			this.comments = comments;
+		}
 		
 	}
 }
