@@ -1,5 +1,6 @@
 $(function() {
 	comment.initial();
+	comment.queryComment();
 });
 
 var comment = {
@@ -52,8 +53,36 @@ var comment = {
 	},
 	
 	queryComment : function queryComment(){
+		var thisquestion  = $(".question:visible");
 		
 		
+		$.ajax({
+			headers : {
+				'Accept' : 'application/json',
+				'Content-Type' : 'application/json'
+			},
+			async:true,
+			type : "GET",
+			url : "student/comment-list/" + $(thisquestion).find(".question-id").text() + "/0",
+			success : function(message, tst, jqXHR) {
+				if (!util.checkSessionOut(jqXHR))
+					return false;
+				if (message.result == "success") {
+					
+					util.success("读取评论列表成功");
+					
+				} else {
+					util.error("读取失败请稍后尝试:" + message.result);
+				}
+			},
+			error : function(jqXHR, textStatus) {
+				util.error("读取失败请稍后尝试");
+			}
+		});
 	}
+};
 
-}
+
+
+
+

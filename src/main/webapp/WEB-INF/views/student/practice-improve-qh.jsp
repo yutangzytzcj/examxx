@@ -190,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 								</div>
 								<form class="comment-form">
-									<textarea rows="" cols="" style="width:100%;height:95px;"></textarea>
+									<textarea rows="" cols="" style="width:100%;height:95px;" placeholder="随便说点什么吧..."></textarea>
 									<input class="btn btn-primary" type="submit" value="发表评论">
 								</form>
 								<div class="comment-total"><span class="comment-total-num">18</span>条评论</div>
