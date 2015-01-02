@@ -158,9 +158,7 @@ String basePath = request.getScheme() + "://"
 									<p>如果您对软件有任何反馈和建议，加入我们的QQ群152258375一起讨论吧</p>
 
 									<!-- Button -->
-									<div class="button">
-										<a href="http://shang.qq.com/wpa/qunwpa?idkey=b365bd36df1bd42ffcf8ab7b91fb93f21841548bcda6ec721de276bae9f72e35"><i class="fa fa-arrow-circle-down"></i> 马上加入我们吧</a>
-									</div>
+										<a class="btn btn-default btn-cta" href="http://shang.qq.com/wpa/qunwpa?idkey=b365bd36df1bd42ffcf8ab7b91fb93f21841548bcda6ec721de276bae9f72e35"><i class="fa fa-arrow-circle-down"></i> 马上加入我们吧</a>
 
 								</div>
 							</div>

@@ -195,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</form>
 								<div class="comment-total"><span class="comment-total-num">18</span>条评论</div>
 								<ul class="comment-list">
-									<li class="comment-list-item">
+									<!-- <li class="comment-list-item">
 										<div class="comment-user-container">
 											<div >
 												<img src="resources/images/photo.jpg" class="comment-user-img">
@@ -232,11 +232,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											应该选B不是吗？
 										</p>
 										
-									</li>
+									</li> -->
 								</ul>
-								<div>
-									<input type="hidden" id="idx_hidden" value="1">
-									<button id="show_more_btn">更多评论</button>
+								<div id="show-more-div">
+									<input type="hidden" id="idx-hidden" value="1">
+									<button id="show-more-btn">更多评论</button>
 								</div>
 								
 							</div>
