@@ -77,10 +77,17 @@ var comment = {
 				if (!util.checkSessionOut(jqXHR))
 					return false;
 				if (message.result == "success") {
-					var html = comment.generatComment(message.object.comments);
-					comment.appendHtml(html,message.object.size);
-					//批次加一
-					$("#idx-hidden").val(parseInt(idx) + 1);
+					if (message.messageInfo == "has-next") {
+					
+						var html = comment.generatComment(message.object.comments);
+						comment.appendHtml(html,message.object.size);
+						//批次加一
+						$("#idx-hidden").val(parseInt(idx) + 1);
+					}else{
+						$("#show-more-btn").text("没有更多评论了...");
+						$("#show-more-btn").attr("disabled","disabled");
+					}
+					
 				} else {
 					util.error("读取失败请稍后尝试:" + message.result);
 				}
