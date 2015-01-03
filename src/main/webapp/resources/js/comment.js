@@ -77,7 +77,17 @@ var comment = {
 				if (!util.checkSessionOut(jqXHR))
 					return false;
 				if (message.result == "success") {
-					if (message.messageInfo == "has-next") {
+					var html = comment.generatComment(message.object.comments);
+					comment.appendHtml(html,message.object.size);
+					//批次加一
+					$("#idx-hidden").val(parseInt(idx) + 1);
+					
+					if (message.messageInfo == "not-has-next") {
+						$("#show-more-btn").text("没有更多评论了...");
+						$("#show-more-btn").attr("disabled","disabled");
+					}
+					
+					/*if (message.messageInfo == "has-next") {
 					
 						var html = comment.generatComment(message.object.comments);
 						comment.appendHtml(html,message.object.size);
@@ -86,7 +96,7 @@ var comment = {
 					}else{
 						$("#show-more-btn").text("没有更多评论了...");
 						$("#show-more-btn").attr("disabled","disabled");
-					}
+					}*/
 					
 				} else {
 					util.error("读取失败请稍后尝试:" + message.result);
@@ -117,8 +127,10 @@ var comment = {
 			html = html + "<li class=\"comment-list-item\">";
 			html = html + "<div class=\"comment-user-container\">";
 			html = html + "<div><img src=\"resources/images/photo.jpg\" class=\"comment-user-img\"></div>";
+			html = html + "<div class=\"comment-user-index\">" + commentList[i].indexId + "<span>楼</span></div>";
 			html = html + "<div class=\"comment-user-info\"><div>" + commentList[i].username + "</div>";
 			html = html + "<div class=\"comment-date\"><span>发表于：</span>" + dateString + "</div>";
+			
 			html = html + 	"</div>";
 			html = html + "</div>";
 			html = html + "<p class=\"comment-user-text\">" + commentList[i].contentMsg + "</p>";

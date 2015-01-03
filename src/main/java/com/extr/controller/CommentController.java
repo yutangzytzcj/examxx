@@ -48,7 +48,7 @@ public class CommentController {
 			Comments c = new Comments();
 			c.setComments(commentList);
 			c.setSize(page.getTotalRecord());
-			if (page.getTotalRecord() > page.getPageSize())
+			if (page.getTotalRecord() > page.getPageSize() * index)
 				msg.setMessageInfo("has-next");
 			msg.setObject(c);
 		} catch (Exception e) {

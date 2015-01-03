@@ -146,7 +146,7 @@ a.pressed:hover {
 	text-align: center;
 	font-size: 16px;
 	line-height: 40px;
-	font-family: Verdana, Arial, sans-serif, '微软雅黑';
+	font-family: Verdana, Arial, sans-serif, '寰蒋闆呴粦';
 }
 
 .question-time-normal {
@@ -246,7 +246,7 @@ a.pressed:hover {
 	color: #C00;
 }
 
-/** 临时dom **/
+/** 涓存椂dom **/
 .tmp-correct-answer {
 	padding: 0 40px 10px 40px;
 	color: #428bca;
@@ -288,13 +288,13 @@ a.pressed:hover {
  z-index:1;
  } */
 
-/**考试中状态**/
+/**鑰冭瘯涓姸鎬�*/
 
 .answer-save-info-error {
 	color: red;
 }
 
-/**试题图片**/
+/**璇曢鍥剧墖**/
 
 .question-content-img {
 	width: 600px;
@@ -379,7 +379,7 @@ a.pressed:hover {
 	top: 1px;
 	font-size: 14px;
 	border-radius: 4px 4px 0 0 !important;
-	font-family: "微软雅黑";
+	font-family: "寰蒋闆呴粦";
 	cursor: pointer;
 	margin-left: 5px;
 	height: 33px;
@@ -497,6 +497,11 @@ a.navi-item-error{
 	margin-left:60px;
 }
 
+.comment-user-index{
+	position:absolute;
+ 	right:30px;
+}
+
 .comment-user-text{
 	margin-top:10px;
 	font-size:15px;
@@ -515,7 +520,7 @@ a.navi-item-error{
 	font-weight:bolder;
 }
 
-/** 强化练习 **/
+/** 寮哄寲缁冧範 **/
 
 .answer-desc-error{
 	background: #FBE3E4;
