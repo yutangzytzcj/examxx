@@ -490,6 +490,10 @@ var examing = {
 			
 		$("#previous-q-btn").click(function(){
 //			examing.saveAnswerSheet();
+			//很重要，切换题目时要清空评论
+			$("#idx-hidden").val(1);
+			$("#last-floor-hidden").val(0);
+			$(".comment-list").html("");
 			var allQuestion = $(".question");
 			var thisquestion  = $(".question:visible");
 			var thisindex = $(".question").index(thisquestion);
@@ -506,6 +510,10 @@ var examing = {
 		
 		$("#next-q-btn").click(function(){
 //			examing.saveAnswerSheet();
+			//很重要，切换题目时要清空评论
+			$("#idx-hidden").val(1);
+			$("#last-floor-hidden").val(0);
+			$(".comment-list").html("");
 			var allQuestion = $(".question");
 			var thisquestion  = $(".question:visible");
 			var thisindex = $(".question").index(thisquestion);

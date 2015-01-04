@@ -72,7 +72,7 @@ var comment = {
 			},
 			async:false,
 			type : "GET",
-			url : "student/comment-list/" + $(thisquestion).find(".question-id").text() + "/" + idx,
+			url : "student/comment-list/" + $(thisquestion).find(".question-id").text() + "/" + idx + "/" + $("#last-floor-hidden").val(),
 			success : function(message, tst, jqXHR) {
 				if (!util.checkSessionOut(jqXHR))
 					return false;
@@ -85,6 +85,9 @@ var comment = {
 					if (message.messageInfo == "not-has-next") {
 						$("#show-more-btn").text("没有更多评论了...");
 						$("#show-more-btn").attr("disabled","disabled");
+					} else {
+						$("#show-more-btn").text("查看更多评论");
+						$("#show-more-btn").removeAttr("disabled");
 					}
 					
 					/*if (message.messageInfo == "has-next") {
@@ -120,6 +123,9 @@ var comment = {
 	generatComment : function generatComment(commentList){
 		if(commentList.length == 0)return "";
 		var html = "";
+		var last_floor = $(".comment-user-index:first").find("a").text();
+		if(last_floor == "")
+			last_floor = 0;
 		
 		for(var i = 0 ; i < commentList.length; i++){
 			postDate = new Date(commentList[i].createTime);
@@ -127,7 +133,7 @@ var comment = {
 			html = html + "<li class=\"comment-list-item\">";
 			html = html + "<div class=\"comment-user-container\">";
 			html = html + "<div><img src=\"resources/images/photo.jpg\" class=\"comment-user-img\"></div>";
-			html = html + "<div class=\"comment-user-index\">" + commentList[i].indexId + "<span>楼</span></div>";
+			html = html + "<div class=\"comment-user-index\"><a>" + commentList[i].indexId + "</a><span>楼</span></div>";
 			html = html + "<div class=\"comment-user-info\"><div>" + commentList[i].username + "</div>";
 			html = html + "<div class=\"comment-date\"><span>发表于：</span>" + dateString + "</div>";
 			
@@ -136,6 +142,9 @@ var comment = {
 			html = html + "<p class=\"comment-user-text\">" + commentList[i].contentMsg + "</p>";
 			html = html + "</li>";
 		}
+		
+		
+		$("#last-floor-hidden").val(last_floor);
 		return html;
 	},
 	

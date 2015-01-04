@@ -26,9 +26,9 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 
-	@RequestMapping(value = "student/comment-list/{questionId}/{index}", method = RequestMethod.GET)
+	@RequestMapping(value = "student/comment-list/{questionId}/{index}/{indexId}", method = RequestMethod.GET)
 	public @ResponseBody
-	Message getQuestionComments(@PathVariable("questionId") int questionId, @PathVariable("index") int index) {
+	Message getQuestionComments(@PathVariable("questionId") int questionId, @PathVariable("index") int index, @PathVariable("indexId") int indexId) {
 		if (index <= 0)
 			index = 1;
 		Message msg = new Message();
@@ -44,7 +44,7 @@ public class CommentController {
 		}
 		
 		try {
-			List<Comment> commentList = commentService.getCommentByQuestionId(questionId, page);
+			List<Comment> commentList = commentService.getCommentByQuestionId(questionId, indexId, page);
 			Comments c = new Comments();
 			c.setComments(commentList);
 			c.setSize(page.getTotalRecord());

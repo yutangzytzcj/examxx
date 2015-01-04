@@ -16,9 +16,9 @@ public class CommentServiceImpl implements CommentService {
 	@Autowired
 	private CommentMapper commentMapper;
 	@Override
-	public List<Comment> getCommentByQuestionId(int questionId,Page<Comment> page) {
+	public List<Comment> getCommentByQuestionId(int questionId,int indexId,Page<Comment> page) {
 		// TODO Auto-generated method stub
-		return commentMapper.getCommentByQuestionId(questionId,page);
+		return commentMapper.getCommentByQuestionId(questionId,indexId,page);
 	}
 	@Override
 	@Transactional

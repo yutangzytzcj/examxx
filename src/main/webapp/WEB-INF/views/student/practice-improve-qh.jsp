@@ -236,6 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</ul>
 								<div id="show-more-div">
 									<input type="hidden" id="idx-hidden" value="1">
+									<input type="hidden" id="last-floor-hidden" value="0">
 									<button id="show-more-btn">更多评论</button>
 								</div>
 								

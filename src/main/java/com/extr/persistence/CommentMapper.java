@@ -22,7 +22,7 @@ import com.extr.util.Page;
  */
 public interface CommentMapper {
 
-	List<Comment> getCommentByQuestionId(@Param("questionId") int questionId,
+	List<Comment> getCommentByQuestionId(@Param("questionId") int questionId,@Param("indexId") int indexId,
 			@Param("page") Page<Comment> page);
 	
 	/**
