@@ -490,16 +490,18 @@ var examing = {
 			
 		$("#previous-q-btn").click(function(){
 //			examing.saveAnswerSheet();
-			//很重要，切换题目时要清空评论
-			$("#idx-hidden").val(1);
-			$("#last-floor-hidden").val(0);
-			$(".comment-list").html("");
+			
 			var allQuestion = $(".question");
 			var thisquestion  = $(".question:visible");
 			var thisindex = $(".question").index(thisquestion);
 			if(thisindex == 0){
 				return false;
 			}else{
+				//很重要，切换题目时要清空评论
+				$("#idx-hidden").val(1);
+				$("#last-floor-hidden").val(0);
+				$(".comment-list").html("");
+				
 				thisquestion.hide();
 				$(allQuestion[thisindex - 1]).show();
 				$(".qni-selected").removeClass("qni-selected");
@@ -510,10 +512,7 @@ var examing = {
 		
 		$("#next-q-btn").click(function(){
 //			examing.saveAnswerSheet();
-			//很重要，切换题目时要清空评论
-			$("#idx-hidden").val(1);
-			$("#last-floor-hidden").val(0);
-			$(".comment-list").html("");
+			
 			var allQuestion = $(".question");
 			var thisquestion  = $(".question:visible");
 			var thisindex = $(".question").index(thisquestion);
@@ -521,6 +520,11 @@ var examing = {
 			if(thisindex == allQuestionLength - 1){
 				return false;
 			}else{
+				//很重要，切换题目时要清空评论
+				$("#idx-hidden").val(1);
+				$("#last-floor-hidden").val(0);
+				$(".comment-list").html("");
+				
 				thisquestion.hide();
 				$(allQuestion[thisindex + 1]).show();
 				$(".qni-selected").removeClass("qni-selected");
