@@ -430,7 +430,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -441,12 +441,15 @@ public class QuestionAdapter {
 			sb.append("</p>");
 			Iterator<String> it1 = questionContent.getChoiceList().keySet()
 					.iterator();
+			sb.append("<ul class=\"question-opt-list\">");
 			while (it1.hasNext()) {
+				sb.append("<li class=\"question-list-item\">");
 				String key = it1.next();
 				String value = questionContent.getChoiceList().get(key);
 				sb.append("<input type=\"radio\" value=\"")
 						.append(key)
 						.append("\" name=\"question-radio1\" class=\"question-input\">");
+				sb.append("<span class=\"question-li-text\">");
 				sb.append(key).append(": ").append(value);
 				if (questionContent.getChoiceImgList() != null)
 					if (questionContent.getChoiceImgList().containsKey(key))
@@ -455,8 +458,10 @@ public class QuestionAdapter {
 								.append(baseUrl)
 								.append(questionContent.getChoiceImgList().get(
 										key)).append("\" />");
-				sb.append("<br>");
+				sb.append("</span>");
+				sb.append("</li>");
 			}
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 2:
@@ -472,7 +477,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -483,7 +488,9 @@ public class QuestionAdapter {
 			sb.append("</p>");
 			Iterator<String> it2 = questionContent.getChoiceList().keySet()
 					.iterator();
+			sb.append("<ul class=\"question-opt-list\">");
 			while (it2.hasNext()) {
+				sb.append("<li class=\"question-list-item\">");
 				String key = it2.next();
 				String value = questionContent.getChoiceList().get(key);
 				sb.append("<input type=\"checkbox\" value=\"")
@@ -497,8 +504,10 @@ public class QuestionAdapter {
 								.append(baseUrl)
 								.append(questionContent.getChoiceImgList().get(
 										key)).append("\" />");
-				sb.append("<br>");
+				sb.append("</span>");
+				sb.append("</li>");
 			}
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 3:
@@ -514,7 +523,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -523,11 +532,16 @@ public class QuestionAdapter {
 							.append(questionContent.getTitleImg())
 							.append("\" />");
 			sb.append("</p>");
-			sb.append(
+			sb.append("<ul class=\"question-opt-list\">");
+			
+			sb.append("<li class=\"question-list-item\">").append(
 					"<input type=\"radio\" value=\"T\" name=\"question-radio2\" class=\"question-input\">")
-					.append("正确<br>")
-					.append("<input type=\"radio\" value=\"F\" name=\"question-radio2\" class=\"question-input\">")
-					.append("错误<br>");
+					.append("<span class=\"question-li-text\">正确</span>").append("</li>");
+			
+			sb.append("<li class=\"question-list-item\">").append("<input type=\"radio\" value=\"F\" name=\"question-radio2\" class=\"question-input\">")
+					.append("<span class=\"question-li-text\">错误</span>").append("</li>");
+			
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 4:
@@ -543,7 +557,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -568,7 +582,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -593,7 +607,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -618,7 +632,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -752,7 +766,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -763,7 +777,9 @@ public class QuestionAdapter {
 			sb.append("</p>");
 			Iterator<String> it1 = questionContent.getChoiceList().keySet()
 					.iterator();
+			sb.append("<ul class=\"question-opt-list\">");
 			while (it1.hasNext()) {
+				sb.append("<li class=\"question-list-item\">");
 				String key = it1.next();
 				String value = questionContent.getChoiceList().get(key);
 				sb.append("<input type=\"radio\" value=\"")
@@ -777,8 +793,10 @@ public class QuestionAdapter {
 								.append(baseUrl)
 								.append(questionContent.getChoiceImgList().get(
 										key)).append("\" />");
-				sb.append("<br>");
+				sb.append("</span>");
+				sb.append("</li>");
 			}
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 2:
@@ -796,7 +814,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -807,7 +825,9 @@ public class QuestionAdapter {
 			sb.append("</p>");
 			Iterator<String> it2 = questionContent.getChoiceList().keySet()
 					.iterator();
+			sb.append("<ul class=\"question-opt-list\">");
 			while (it2.hasNext()) {
+				sb.append("<li class=\"question-list-item\">");
 				String key = it2.next();
 				String value = questionContent.getChoiceList().get(key);
 				sb.append("<input type=\"checkbox\" value=\"")
@@ -821,8 +841,10 @@ public class QuestionAdapter {
 								.append(baseUrl)
 								.append(questionContent.getChoiceImgList().get(
 										key)).append("\" />");
-				sb.append("<br>");
+				sb.append("</span>");
+				sb.append("</li>");
 			}
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 3:
@@ -840,7 +862,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -849,11 +871,16 @@ public class QuestionAdapter {
 							.append(questionContent.getTitleImg())
 							.append("\" />");
 			sb.append("</p>");
-			sb.append(
+			sb.append("<ul class=\"question-opt-list\">");
+			
+			sb.append("<li class=\"question-list-item\">").append(
 					"<input type=\"radio\" value=\"T\" name=\"question-radio2\" class=\"question-input\">")
-					.append("正确<br>")
-					.append("<input type=\"radio\" value=\"F\" name=\"question-radio2\" class=\"question-input\">")
-					.append("错误<br>");
+					.append("<span class=\"question-li-text\">正确</span>").append("</li>");
+			
+			sb.append("<li class=\"question-list-item\">").append("<input type=\"radio\" value=\"F\" name=\"question-radio2\" class=\"question-input\">")
+					.append("<span class=\"question-li-text\">错误</span>").append("</li>");
+			
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 4:
@@ -871,7 +898,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -898,7 +925,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -925,7 +952,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -952,7 +979,7 @@ public class QuestionAdapter {
 					.append(questionQueryResult.getQuestionId()).append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -1083,7 +1110,7 @@ public class QuestionAdapter {
 					.append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -1094,7 +1121,9 @@ public class QuestionAdapter {
 			sb.append("</p>");
 			Iterator<String> it1 = questionContent.getChoiceList().keySet()
 					.iterator();
+			sb.append("<ul class=\"question-opt-list\">");
 			while (it1.hasNext()) {
+				sb.append("<li class=\"question-list-item\">");
 				String key = it1.next();
 				String value = questionContent.getChoiceList().get(key);
 				sb.append("<input type=\"radio\" value=\"")
@@ -1108,8 +1137,10 @@ public class QuestionAdapter {
 								.append(baseUrl)
 								.append(questionContent.getChoiceImgList().get(
 										key)).append("\" />");
-				sb.append("<br>");
+				sb.append("</span>");
+				sb.append("</li>");
 			}
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 2:
@@ -1126,7 +1157,7 @@ public class QuestionAdapter {
 					.append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -1137,7 +1168,9 @@ public class QuestionAdapter {
 			sb.append("</p>");
 			Iterator<String> it2 = questionContent.getChoiceList().keySet()
 					.iterator();
+			sb.append("<ul class=\"question-opt-list\">");
 			while (it2.hasNext()) {
+				sb.append("<li class=\"question-list-item\">");
 				String key = it2.next();
 				String value = questionContent.getChoiceList().get(key);
 				sb.append("<input type=\"checkbox\" value=\"")
@@ -1151,8 +1184,10 @@ public class QuestionAdapter {
 								.append(baseUrl)
 								.append(questionContent.getChoiceImgList().get(
 										key)).append("\" />");
-				sb.append("<br>");
+				sb.append("</span>");
+				sb.append("</li>");
 			}
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 3:
@@ -1169,7 +1204,7 @@ public class QuestionAdapter {
 					.append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -1178,11 +1213,16 @@ public class QuestionAdapter {
 							.append(questionContent.getTitleImg())
 							.append("\" />");
 			sb.append("</p>");
-			sb.append(
+			sb.append("<ul class=\"question-opt-list\">");
+			
+			sb.append("<li class=\"question-list-item\">").append(
 					"<input type=\"radio\" value=\"T\" name=\"question-radio2\" class=\"question-input\">")
-					.append("正确<br>")
-					.append("<input type=\"radio\" value=\"F\" name=\"question-radio2\" class=\"question-input\">")
-					.append("错误<br>");
+					.append("<span class=\"question-li-text\">正确</span>").append("</li>");
+			
+			sb.append("<li class=\"question-list-item\">").append("<input type=\"radio\" value=\"F\" name=\"question-radio2\" class=\"question-input\">")
+					.append("<span class=\"question-li-text\">错误</span>").append("</li>");
+			
+			sb.append("</ul>");
 			sb.append("</form>");
 			break;
 		case 4:
@@ -1199,7 +1239,7 @@ public class QuestionAdapter {
 					.append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -1225,7 +1265,7 @@ public class QuestionAdapter {
 					.append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -1251,7 +1291,7 @@ public class QuestionAdapter {
 					.append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
@@ -1277,7 +1317,7 @@ public class QuestionAdapter {
 					.append("</span>");
 			sb.append("</div>");
 			sb.append("<form class=\"question-body\">");
-			sb.append("<p>").append(questionContent.getTitle());
+			sb.append("<p class=\"question-body-text\">").append(questionContent.getTitle());
 			if (questionContent.getTitleImg() != null)
 				if (!questionContent.getTitleImg().trim().equals(""))
 					sb.append(
