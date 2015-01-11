@@ -10,6 +10,7 @@ var examing = {
 		this.refreshNavi();
 		this.bindNaviBehavior();
 		this.addNumber();
+		this.bindOptClick();
 //		this.securityHandler();
 //		this.updateSummery();
 		this.bindfocus();
@@ -608,6 +609,20 @@ var examing = {
 		var finished = 100 * $("#question-navi-content .pressed").length;
 		
 		$(".h-progress span").attr("style","width:" + finished/total + "%;");
+		
+	},
+	
+	bindOptClick : function bindOptClick(){
+		$(".question-list-item").click(function(){
+		
+			var thisquestion  = $(".question:visible");
+			if(thisquestion.hasClass("qt-finished")||examing.examModel == false){
+				return false;
+			}
+			$(this).parent().find(".question-list-item-selected").removeClass("question-list-item-selected");
+			$(this).addClass("question-list-item-selected");
+			$(this).find("input").prop("checked", true);
+		});
 		
 	}
 };

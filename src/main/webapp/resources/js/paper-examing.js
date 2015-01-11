@@ -11,8 +11,9 @@ var examing = {
 		this.refreshNavi();
 		this.bindNaviBehavior();
 		this.addNumber();
-		this.securityHandler();
+//		this.securityHandler();
 
+		this.bindOptClick();
 		this.updateSummery();
 		this.bindQuestionFilter();
 		this.bindfocus();
@@ -502,6 +503,14 @@ var examing = {
 			as[tmpkey] = tmpvalue;
 		}
 		return as;
+	},
+	bindOptClick : function bindOptClick(){
+		$(".question-list-item").click(function(){
+			$(this).parent().find(".question-list-item-selected").removeClass("question-list-item-selected");
+			$(this).addClass("question-list-item-selected");
+			$(this).find("input").prop("checked", true);
+		});
+		
 	}
 };
 

@@ -64,7 +64,7 @@
 }
 
 .question-body input {
-	margin-bottom: 5px;
+	margin-right: 8px;
 }
 
 .question-title-icon {
@@ -93,7 +93,20 @@
 	font-size: 12px;
 	cursor: pointer;
 }
+.question-list-item{
+	list-style-type: none;
+}
+.question-list-item:hover{
+	cursor:pointer;
+}
 
+.question-list-item-selected{
+	background-color:#EEE;
+}
+
+.question-opt-list{
+	padding-left:0px;
+}
 
 
 a.qni-selected{
