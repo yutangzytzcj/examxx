@@ -243,6 +243,7 @@ exampaper_add = {
 			paperParam.passPoint = parseInt($(".add-update-pass-point input").val());
 			paperParam.time = $(".add-update-duration input").val();
 			paperParam.paperPoint = $("#total-point").val();
+			paperParam.paperType = $(".add-update-exampaper-type select").val();
 			
 			var qt = $(".add-ques-type");
 			var amountMap = new Object();

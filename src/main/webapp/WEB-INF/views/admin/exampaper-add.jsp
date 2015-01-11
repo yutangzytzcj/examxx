@@ -134,7 +134,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</select>
 									<span class="form-message"></span>
 								</div>
-								
+								<div class="form-line add-update-exampaper-type">
+									<span class="form-label"><span class="warning-label">*</span>试卷类型：</span>
+									<select class="df-input-narrow">
+										<option value="3">专家试卷</option>
+										<option value="2" selected="selected">模拟考试</option>
+										<option value="1">随机试卷</option>
+										
+									</select>
+									<span class="form-message"></span>
+								</div>
 								<div class="form-line add-update-pass-point">
 									<span class="form-label"><span class="warning-label">*</span>及格分数：</span>
 									<input type="text" class="df-input-narrow">

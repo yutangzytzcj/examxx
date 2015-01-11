@@ -37,6 +37,13 @@ public class PaperCreatorParam {
 	 * 试卷总分
 	 */
 	private float paperPoint;
+	private String paperType;
+	public String getPaperType() {
+		return paperType;
+	}
+	public void setPaperType(String paperType) {
+		this.paperType = paperType;
+	}
 	public float getPaperPoint() {
 		return paperPoint;
 	}

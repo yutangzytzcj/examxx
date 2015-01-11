@@ -110,7 +110,9 @@ public class UserCenterController {
 				}
 				sr.setRightTimes(rightAmount);
 				sr.setWrongTimes(wrongAmount);
-				int amount = pointStatisticMap.get(sr.getPointId());
+				int amount = 0;
+				if(pointStatisticMap.containsKey(sr.getPointId()))
+					amount = pointStatisticMap.get(sr.getPointId());
 				System.out.println("amount=" + amount);
 				float rightRate = rightAmount + wrongAmount != 0 ? (float) Math
 						.round((float) rightAmount * 10000f / amount) / 10000f

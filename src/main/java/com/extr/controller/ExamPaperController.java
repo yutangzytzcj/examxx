@@ -150,7 +150,7 @@ public class ExamPaperController {
 		examPaper.setName(param.getPaperName());
 		examPaper.setDuration(param.getTime());
 		examPaper.setPass_point(param.getPassPoint());
-		examPaper.setPaper_type("1");
+		examPaper.setPaper_type(param.getPaperType());
 		examPaper.setCreator(userInfo.getUsername());
 		examPaper.setTotal_point(param.getPaperPoint());
 		

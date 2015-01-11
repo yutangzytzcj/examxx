@@ -175,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div>
 									<span >上次登录：</span>
-									<span> ${lastLoginTime } </span>
+									<span> <fmt:formatDate value="${lastLoginTime }" pattern="yyyy-MM-dd"/> </span>
 								</div>
 								
 							</div>
