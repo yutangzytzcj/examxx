@@ -124,4 +124,11 @@ public interface QuestionService {
 	 * @param idList
 	 */
 	public void deleteKnowledgePointByIdList( List<Integer> idList);
+	
+	/**
+	 * 上传试题
+	 * @param filePath
+	 * @param username
+	 */
+	public void uploadQuestions(String filePath,String username);
 }
