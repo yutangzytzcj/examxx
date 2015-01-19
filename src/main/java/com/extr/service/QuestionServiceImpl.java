@@ -328,4 +328,10 @@ public class QuestionServiceImpl implements QuestionService {
 			throw new RuntimeException("第" + index + "行有错误，请检查！");
 		}
 	}
+
+	@Override
+	public Integer getMinFieldId() {
+		// TODO Auto-generated method stub
+		return questionMapper.getMinFieldId();
+	}
 }

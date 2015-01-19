@@ -329,4 +329,9 @@
 			#{item}
 		</foreach>
 	</delete>
+	
+	<select id="getMinFieldId" resultType="Integer">
+		select min(a.field_id) from et_field a,et_knowledge_point b
+		where a.field_id=b.field_id
+	</select>
 </mapper>

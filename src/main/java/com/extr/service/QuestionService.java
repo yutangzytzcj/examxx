@@ -131,4 +131,10 @@ public interface QuestionService {
 	 * @param username
 	 */
 	public void uploadQuestions(String filePath,String username);
+	
+	/**
+	 * 获取一个最小的，具有point的fieldid，用于首页取默认field
+	 * @return
+	 */
+	public Integer getMinFieldId();
 }

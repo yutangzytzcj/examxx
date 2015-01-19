@@ -121,4 +121,10 @@ public interface QuestionMapper {
 	public void deleteFieldByIdList(@Param("array") List<Integer> idList);
 	
 	public void deleteKnowledgePointByIdList(@Param("array") List<Integer> idList);
+	
+	/**
+	 * 获取一个最小的，具有point的fieldid，用于首页取默认field
+	 * @return
+	 */
+	public Integer getMinFieldId();
 }
