@@ -33,7 +33,7 @@ public class FileUploadUtil {
 			HttpServletResponse response, String username) throws FileNotFoundException{
 		List<String> filePathList = new ArrayList<String>();
 		
-		String strPath = "webapps,files,training," + username + ",tmp";
+		String strPath = ",webapps,files,question," + username + ",tmp";
 		
 		String filepath = System.getProperty("catalina.base") + strPath.replace(',', File.separatorChar);
 		

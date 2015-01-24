@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<h1><i class="fa fa-cloud-upload"></i> 导入试题 </h1>
 						</div>
 						<div class="page-content row">
-							<form id="from-question-import" action="teacher/upload-question">
+							<form id="from-question-import" action="admin/question-import">
 							<div class="form-line upload-question-group">
 								<span class="form-label">选择题库：</span>
 								<select class="df-input-narrow">
@@ -136,14 +136,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="form-label">下载模板：</span>
 								<a href="resources/template/question.xls" style="color:rgb(22,22,22);text-decoration: underline;">点击下载</a>
 							</div>
-							<div class="form-line upload-question-file">
-								<span class="form-label">上传文件：</span>
-								<div id="div-file-list">
+							<div class="control-group">
+								<label class="control-label" for="username"><span
+									class="warning-label">*</span>上传文件</label>
+								<div class="controls form-line file-form-line">
+									<div>
+										<div id="div-file-list"></div>
+										<%--用来作为文件队列区域--%>
+										<div id="fileQueue"></div>
+										<input type="file" name="uploadify" id="uploadify" />
+									</div>
+
+									<span class="help-inline form-message"></span>
 								</div>
-								<div id="uploadify" class="uploadify" style="height: 25px;"><object id="SWFUpload_0" type="application/x-shockwave-flash" data="resources/js/uploadify/uploadify.swf?preventswfcaching=1401981635735" width="100%" height="25" class="swfupload" style="position: absolute; z-index: 1;"><param name="wmode" value="transparent"><param name="movie" value="resources/js/uploadify/uploadify.swf?preventswfcaching=1401981635735"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_0&amp;uploadURL=%2Fextr-0.0.1-SNAPSHOT%2Fteacher%2Fupload-uploadify&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=sessionHash%3Da0486b50f6e9fbfe47ccc6988f27b49ee1792915%26amp%3Bpath%3D&amp;filePostName=Filedata&amp;fileTypes=*.*&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=2048&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=%2Fextr-0.0.1-SNAPSHOT%2Fteacher%2F&amp;buttonWidth=100%25&amp;buttonHeight=25&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-110&amp;buttonDisabled=false&amp;buttonCursor=-2"></object><div id="uploadify-button" class="uploadify-button " style="height: 25px; line-height: 25px;"><span class="uploadify-button-text">点击上传</span></div></div><div id="uploadify-queue" class="uploadify-queue"></div>
-								<span class="form-message"></span>
 							</div>
-							
+
 							<div class="form-line">
 								<input value="提交" type="submit" class="df-submit">
 							</div>
@@ -176,11 +183,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Javascript files -->
 		<!-- jQuery -->
 		<script type="text/javascript" src="resources/js/jquery/jquery-1.9.0.min.js"></script>
+		<script type="text/javascript" src="resources/js/uploadify/jquery.uploadify3.1Fixed.js"></script>
 		<!-- Bootstrap JS -->
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
 		<script type="text/javascript" src="resources/chart/morris.js"></script>
 		
-		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
+		<script type="text/javascript" src="resources/js/question-import.js"></script>
+		
+		
 	</body>
 </html>

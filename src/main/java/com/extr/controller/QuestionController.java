@@ -275,7 +275,7 @@ public class QuestionController {
 			    .getPrincipal();
 		List<String> filePathList = new ArrayList<String>();
 		try {
-			filePathList = FileUploadUtil.uploadImg(request, response, userInfo.getUsername());
+			filePathList = FileUploadUtil.uploadFile(request, response, userInfo.getUsername());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -470,4 +470,18 @@ public class QuestionController {
 		return "admin/add-field";
 	}
 	
+	@RequestMapping(value = "/admin/question-import", method = RequestMethod.POST)
+	public @ResponseBody Message courseImport(@RequestBody String filePath) {
+		Message message = new Message();
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		try{
+			questionService.uploadQuestions(filePath, userInfo.getUsername());
+		}catch(RuntimeException e){
+			message.setResult(e.getClass().getName() + ":" + e.getMessage());
+			message.setMessageInfo(e.getMessage());
+		}
+		
+		return message;
+	}
 }
