@@ -241,7 +241,7 @@ public class QuestionServiceImpl implements QuestionService {
 		// TODO Auto-generated method stub
 		questionMapper.deleteKnowledgePointByIdList(idList);
 	}
-
+	
 	@Override
 	@Transactional
 	public void uploadQuestions(String filePath,String username) {

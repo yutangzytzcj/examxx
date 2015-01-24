@@ -29,7 +29,6 @@ question_import={
 				},
 				'onUploadSuccess' : function(file, data, response) {  
 					
-					alert("hello");
 					$('#div-file-list').html('<a class=\'file-name\'>' 
 							+ file.name 
 							+ '</a><input type=\'hidden\' value=\'' 
