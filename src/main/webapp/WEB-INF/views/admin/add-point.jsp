@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="resources/bootstrap/css/bootstrap-huan.css" rel="stylesheet">
 		<link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<link href="resources/css/style.css" rel="stylesheet">
-		<link href="resources/css/slider.css" rel="stylesheet">
+		
 		<link href="resources/css/exam.css" rel="stylesheet">
 		<link href="resources/chart/morris.css" rel="stylesheet">
 	</head>

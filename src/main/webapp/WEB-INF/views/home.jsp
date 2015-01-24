@@ -26,7 +26,7 @@ String basePath = request.getScheme() + "://"
 		<link href="resources/font-awesome/css/font-awesome.min.css"
 		rel="stylesheet">
 		<link href="resources/css/style.css" rel="stylesheet">
-		<link href="resources/css/slider.css" rel="stylesheet">
+		
 		<style>
 			.question-number{
 				color: #5cb85c;

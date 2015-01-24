@@ -2,32 +2,34 @@ $(function(){
 	question_import.initial();
 });
 
-question_import={
+var question_import={
 		initial : function initial() {
-			this.uploadify();
+			this.prepareUploadify();
 			this.questionDataProcess();
 		},
-		uploadify : function uploadify(){
+		prepareUploadify : function prepareUploadify(){
+			setTimeout(function(){
 			$("#uploadify").uploadify({
 		    	'debug'	 : false,
 				'buttonText'	: '点击上传附件',
 				'buttonCursor'	: 'pointer',
-				'uploader'	 : 'upload-uploadify',
+				'uploader'	 : document.getElementsByTagName('base')[0].href + 'admin/upload-uploadify/',
 				'queueID': 'fileQueue',
-				'swf'	 : 'resources/js/uploadify/uploadify.swf',
+				'swf'	 : document.getElementsByTagName('base')[0].href + 'resources/js/uploadify/uploadify.swf',
 				'multi'	 : false,
 				'auto'	 : true,
-				'height'	 : '26',
+				'height' : '26',
 				'width'	 : '160',
 				'requeueErrors'	: false,
 				'fileSizeLimit'	: '20480', // expects input in kb
-				'cancelImage'	: 'resources/js/uploadify/cancel.png',
+				'cancelImage'	: document.getElementsByTagName('base')[0].href + 'resources/js/uploadify/cancel.png',
 				removeCompleted : false,
 				overrideEvents:['onSelectError','onDialogClose'],
 				onUploadComplete: function(file) {
+
 					
 				},
-				'onUploadSuccess' : function(file, data, response) {  
+				onUploadSuccess : function(file, data, response) {  
 					
 					$('#div-file-list').html('<a class=\'file-name\'>' 
 							+ file.name 
@@ -45,6 +47,8 @@ question_import={
 					util.error(errorMsg);
 				}
 		    });
+			
+			},2);
 		},
 		questionDataProcess : function questionDataProcess(){
 			$("#from-question-import").submit(function(){

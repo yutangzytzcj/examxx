@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="resources/bootstrap/css/bootstrap-huan.css" rel="stylesheet">
 		<link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<link href="resources/css/style.css" rel="stylesheet">
-		<link href="resources/css/slider.css" rel="stylesheet">
+		
 		<link href="resources/css/question-add.css" rel="stylesheet">
 		<link href="resources/chart/morris.css" rel="stylesheet">
 	</head>
@@ -127,8 +127,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<c:forEach items="${fieldList }" var="item">
 											<option value="${item.fieldId }">${item.fieldName }</option>
 										</c:forEach>
-											
-									
 								</select>
 								<span class="form-message"></span>
 							</div>
@@ -136,32 +134,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="form-label">下载模板：</span>
 								<a href="resources/template/question.xls" style="color:rgb(22,22,22);text-decoration: underline;">点击下载</a>
 							</div>
-							<div class="control-group">
-								<label class="control-label" for="username"><span
-									class="warning-label">*</span>上传文件</label>
-								<div class="controls form-line file-form-line">
+							<div class="form-line control-group">
+								<span class="form-label"><span class="warning-label">*</span>上传文件：</span>
+								<div class="controls file-form-line">
 									<div>
 										<div id="div-file-list"></div>
-										<%--用来作为文件队列区域--%>
+										<!-- 用来作为文件队列区域 -->
 										<div id="fileQueue"></div>
-										<input type="file" name="uploadify" id="uploadify" />
+										<div id="uploadify"></div>
 									</div>
-
 									<span class="help-inline form-message"></span>
 								</div>
 							</div>
-
 							<div class="form-line">
 								<input value="提交" type="submit" class="df-submit">
 							</div>
 						</form>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
 		<footer>
 			<div class="container">
 				<div class="row">
@@ -185,10 +178,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/js/jquery/jquery-1.9.0.min.js"></script>
 		<script type="text/javascript" src="resources/js/all.js"></script>
 		<script type="text/javascript" src="resources/js/uploadify/jquery.uploadify3.1Fixed.js"></script>
-		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>		
 		<script type="text/javascript" src="resources/js/question-import.js"></script>
 		
-		
+		<!-- Bootstrap JS -->
+		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

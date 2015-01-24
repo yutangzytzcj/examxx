@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<link href="resources/css/exam.css" rel="stylesheet" type="text/css">
 		<link href="resources/css/style.css" rel="stylesheet">
-		<link href="resources/css/slider.css" rel="stylesheet">
+		
 		<style type="text/css">
 			.question-body {
 				padding: 30px 30px 20px 30px;
