@@ -1,5 +1,6 @@
 package com.extr.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -246,6 +247,10 @@ public class QuestionServiceImpl implements QuestionService {
 	@Transactional
 	public void uploadQuestions(String filePath,String username) {
 		// TODO Auto-generated method stub
+		
+		String strPath = ",webapps,files,question," + username + ",tmp";
+		
+		filePath = System.getProperty("catalina.base") + strPath.replace(',', File.separatorChar) + File.separatorChar + filePath;
 		int index = 2;
 		try {
 			List<Map<String, String>> questionMapList = ExcelUtil
