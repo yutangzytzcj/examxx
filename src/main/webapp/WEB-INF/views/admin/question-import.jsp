@@ -124,8 +124,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="form-label">选择题库：</span>
 								<select class="df-input-narrow">
 									<option value="-1">-- 请选择 --</option>
-									
-											<option value="1">营销类 题库</option>
+										<c:forEach items="${fieldList }" var="item">
+											<option value="${item.fieldId }">${item.fieldName }</option>
+										</c:forEach>
+											
 									
 								</select>
 								<span class="form-message"></span>
@@ -178,6 +180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
 		<script type="text/javascript" src="resources/chart/morris.js"></script>
+		
 		<script type="text/javascript" src="resources/js/exam-finished.js"></script>
 	</body>
 </html>

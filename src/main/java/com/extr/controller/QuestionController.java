@@ -174,6 +174,9 @@ public class QuestionController {
 	 */
 	@RequestMapping(value = "/admin/question-import", method = RequestMethod.GET)
 	public String questionImportPage(Model model) {
+		
+		List<Field> fieldList = questionService.getAllField(null);
+		model.addAttribute("fieldList", fieldList);
 		return "admin/question-import";
 	}
 
