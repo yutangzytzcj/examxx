@@ -183,12 +183,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Javascript files -->
 		<!-- jQuery -->
 		<script type="text/javascript" src="resources/js/jquery/jquery-1.9.0.min.js"></script>
+		<script type="text/javascript" src="resources/js/all.js"></script>
 		<script type="text/javascript" src="resources/js/uploadify/jquery.uploadify3.1Fixed.js"></script>
 		<!-- Bootstrap JS -->
-		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
-		<script type="text/javascript" src="resources/chart/morris.js"></script>
-		
+		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>		
 		<script type="text/javascript" src="resources/js/question-import.js"></script>
 		
 		

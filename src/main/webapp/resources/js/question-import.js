@@ -12,7 +12,7 @@ question_import={
 		    	'debug'	 : false,
 				'buttonText'	: '点击上传附件',
 				'buttonCursor'	: 'pointer',
-				'uploader'	 : 'upload-uploadify-img',
+				'uploader'	 : 'upload-uploadify',
 				'queueID': 'fileQueue',
 				'swf'	 : 'resources/js/uploadify/uploadify.swf',
 				'multi'	 : false,
@@ -22,16 +22,18 @@ question_import={
 				'requeueErrors'	: false,
 				'fileSizeLimit'	: '20480', // expects input in kb
 				'cancelImage'	: 'resources/js/uploadify/cancel.png',
+				removeCompleted : false,
 				overrideEvents:['onSelectError','onDialogClose'],
 				onUploadComplete: function(file) {
 					
 				},
 				'onUploadSuccess' : function(file, data, response) {  
-					data = $.parseJSON(data);
+					
+					alert("hello");
 					$('#div-file-list').html('<a class=\'file-name\'>' 
 							+ file.name 
 							+ '</a><input type=\'hidden\' value=\'' 
-							+ data[0] + '\' />');
+							+ data + '\' />');
 					
 		        },
 				onSelectError: function(file,errorCode,errorMsg) {
