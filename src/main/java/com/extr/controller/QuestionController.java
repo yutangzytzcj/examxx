@@ -493,8 +493,8 @@ public class QuestionController {
 		return "admin/add-field";
 	}
 	
-	@RequestMapping(value = "/admin/question-import", method = RequestMethod.POST)
-	public @ResponseBody Message courseImport(@RequestBody String filePath) {
+	@RequestMapping(value = "/admin/question-import/{id}", method = RequestMethod.POST)
+	public @ResponseBody Message courseImport(@RequestBody String filePath, @PathVariable("id") int id) {
 		Message message = new Message();
 		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
 				.getAuthentication().getPrincipal();

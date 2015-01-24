@@ -54,7 +54,7 @@ var question_import={
 						'Content-Type' : 'application/json'
 					},
 					type : "POST",
-					url : $("#from-question-import").attr("action"),
+					url : $("#from-question-import").attr("action") + "/" + $(".upload-question-group select").val(),
 					data : JSON.stringify(filePath),
 					success : function(message, tst, jqXHR) {
 						if (!util.checkSessionOut(jqXHR))
