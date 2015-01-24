@@ -275,6 +275,29 @@ public class QuestionController {
 			    .getPrincipal();
 		List<String> filePathList = new ArrayList<String>();
 		try {
+			filePathList = FileUploadUtil.uploadImg(request, response, userInfo.getUsername());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+		if(filePathList.size() == 0){
+			return "系统错误";
+		}
+				
+		
+		return filePathList.get(0);
+	}
+	
+	@RequestMapping(value = "/admin/upload-uploadify", method = RequestMethod.POST)
+	public @ResponseBody String uploadFile(HttpServletRequest request, HttpServletResponse response){
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+			    .getAuthentication()
+			    .getPrincipal();
+		List<String> filePathList = new ArrayList<String>();
+		try {
 			filePathList = FileUploadUtil.uploadFile(request, response, userInfo.getUsername());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
