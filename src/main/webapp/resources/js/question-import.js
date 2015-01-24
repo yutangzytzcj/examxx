@@ -9,45 +9,40 @@ var question_import={
 		},
 		prepareUploadify : function prepareUploadify(){
 			setTimeout(function(){
-			$("#uploadify").uploadify({
-		    	'debug'	 : false,
-				'buttonText'	: '点击上传附件',
-				'buttonCursor'	: 'pointer',
-				'uploader'	 : document.getElementsByTagName('base')[0].href + 'admin/upload-uploadify/',
-				'queueID': 'fileQueue',
-				'swf'	 : document.getElementsByTagName('base')[0].href + 'resources/js/uploadify/uploadify.swf',
-				'multi'	 : false,
-				'auto'	 : true,
-				'height' : '26',
-				'width'	 : '160',
-				'requeueErrors'	: false,
-				'fileSizeLimit'	: '20480', // expects input in kb
-				'cancelImage'	: document.getElementsByTagName('base')[0].href + 'resources/js/uploadify/cancel.png',
-				removeCompleted : false,
-				overrideEvents:['onSelectError','onDialogClose'],
-				onUploadComplete: function(file) {
-
-					
-				},
-				onUploadSuccess : function(file, data, response) {  
-					
-					$('#div-file-list').html('<a class=\'file-name\'>' 
-							+ file.name 
-							+ '</a><input type=\'hidden\' value=\'' 
-							+ data + '\' />');
-					
-		        },
-				onSelectError: function(file,errorCode,errorMsg) {
-					if(errorCode==-110){
-						util.notify("只能上传20M以下的文件。");
-						return false;
+				$("#uploadify").uploadify({
+			    	'debug'	 : false,
+					'buttonText'	: '点击上传附件',
+					'buttonCursor'	: 'pointer',
+					'uploader'	 : document.getElementsByTagName('base')[0].href + 'admin/upload-uploadify/',
+					'queueID': 'fileQueue',
+					'swf'	 : document.getElementsByTagName('base')[0].href + 'resources/js/uploadify/uploadify.swf',
+					'multi'	 : false,
+					'auto'	 : true,
+					'height' : '26',
+					'width'	 : '160',
+					'requeueErrors'	: false,
+					'fileSizeLimit'	: '20480', // expects input in kb
+					'cancelImage'	: document.getElementsByTagName('base')[0].href + 'resources/js/uploadify/cancel.png',
+					removeCompleted : true,
+					overrideEvents:['onSelectError','onDialogClose'],
+					onUploadComplete: function(file) {
+					},
+					onUploadSuccess : function(file, data, response) {  
+						$('#div-file-list').html('<a class=\'file-name\'>' 
+								+ file.name 
+								+ '</a><input type=\'hidden\' value=\'' 
+								+ data + '\' />');
+			        },
+					onSelectError: function(file,errorCode,errorMsg) {
+						if(errorCode==-110){
+							util.notify("只能上传20M以下的文件。");
+							return false;
+						}
+					},
+					onUploadError: function(file,errorCode,errorMsg, errorString) {
+						util.error(errorMsg);
 					}
-				},
-				onUploadError: function(file,errorCode,errorMsg, errorString) {
-					util.error(errorMsg);
-				}
-		    });
-			
+			    });
 			},2);
 		},
 		questionDataProcess : function questionDataProcess(){
@@ -74,7 +69,6 @@ var question_import={
 							$("#submit-div .form-message").text(message.messageInfo);
 							$("#btn-add-submit").removeAttr("disabled");
 						}
-
 					},
 					error : function(jqXHR, textStatus) {
 						util.error("操作失败请稍后尝试");
