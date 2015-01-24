@@ -245,7 +245,7 @@ public class QuestionServiceImpl implements QuestionService {
 	
 	@Override
 	@Transactional
-	public void uploadQuestions(String filePath,String username) {
+	public void uploadQuestions(String filePath,String username,int fieldId) {
 		// TODO Auto-generated method stub
 		
 		String strPath = ",webapps,files,question," + username + ",tmp";
@@ -287,10 +287,9 @@ public class QuestionServiceImpl implements QuestionService {
 						question.setAnswer("F");
 				}
 
-				String z = map.get("知识类");
-				String s = map.get("所属专业");
-				KnowledgePoint kp = this.getKnowledgePointByName(
-						map.get("知识类"), map.get("所属专业"));
+				/*KnowledgePoint kp = this.getKnowledgePointByName(
+						map.get("知识类"), map.get("所属专业"));*/
+				KnowledgePoint kp = questionMapper.getKnowledgePointByPointNameAndFieldId(map.get("知识类"), fieldId);
 				List<Integer> pointList = new ArrayList<Integer>();
 				pointList.add(kp.getPointId());
 				question.setReferenceName(map.get("出处"));

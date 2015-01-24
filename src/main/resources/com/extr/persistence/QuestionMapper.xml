@@ -263,6 +263,15 @@
 		and
 		a.point_name=#{pointName} and b.field_name=#{fieldName}
 	</select>
+	
+	<select id="getKnowledgePointByPointNameAndFieldId" resultType="com.extr.domain.question.KnowledgePoint">
+		select
+		a.point_id pointId,a.point_name pointName,a.field_id fieldId from
+		et_knowledge_point a,et_field b
+		where a.field_id=b.field_id
+		and
+		a.point_name=#{pointName} and b.field_id=#{fieldId}
+	</select>
 
 	<insert id="addUserQuestionHistory" parameterType="com.extr.domain.question.UserQuestionHistory"
 		useGeneratedKeys="true" keyProperty="userQuestionHistoryId">

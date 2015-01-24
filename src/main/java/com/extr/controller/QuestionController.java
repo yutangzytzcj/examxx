@@ -498,8 +498,13 @@ public class QuestionController {
 		Message message = new Message();
 		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
 				.getAuthentication().getPrincipal();
+		if(id == 0){
+			message.setResult("error");
+			message.setMessageInfo("请选择题库");
+			return message;
+		}
 		try{
-			questionService.uploadQuestions(filePath, userInfo.getUsername());
+			questionService.uploadQuestions(filePath, userInfo.getUsername(),id);
 		}catch(RuntimeException e){
 			message.setResult(e.getClass().getName() + ":" + e.getMessage());
 			message.setMessageInfo(e.getMessage());

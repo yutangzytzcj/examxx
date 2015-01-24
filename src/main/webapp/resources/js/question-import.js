@@ -31,7 +31,7 @@ var question_import={
 						$('#div-file-list').html('<a class=\'file-name\'>' 
 								+ file.name 
 								+ '</a><input type=\'hidden\' value=\'' 
-								+ data + '\' />');
+								+ file.name + '\' />');
 			        },
 					onSelectError: function(file,errorCode,errorMsg) {
 						if(errorCode==-110){
@@ -55,7 +55,7 @@ var question_import={
 					},
 					type : "POST",
 					url : $("#from-question-import").attr("action") + "/" + $(".upload-question-group select").val(),
-					data : JSON.stringify(filePath),
+					data : filePath,
 					success : function(message, tst, jqXHR) {
 						if (!util.checkSessionOut(jqXHR))
 							return false;

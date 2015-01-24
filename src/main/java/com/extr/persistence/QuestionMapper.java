@@ -78,6 +78,10 @@ public interface QuestionMapper {
 	public KnowledgePoint getKnowledgePointByName(
 			@Param("pointName") String pointName,
 			@Param("fieldName") String fieldName);
+	
+	public KnowledgePoint getKnowledgePointByPointNameAndFieldId(
+			@Param("pointName") String pointName,
+			@Param("fieldId") int fieldId);
 
 	/**
 	 * 添加学员练习试题的记录

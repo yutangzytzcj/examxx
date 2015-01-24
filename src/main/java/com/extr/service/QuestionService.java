@@ -130,7 +130,7 @@ public interface QuestionService {
 	 * @param filePath
 	 * @param username
 	 */
-	public void uploadQuestions(String filePath,String username);
+	public void uploadQuestions(String filePath,String username,int fieldId);
 	
 	/**
 	 * 获取一个最小的，具有point的fieldid，用于首页取默认field

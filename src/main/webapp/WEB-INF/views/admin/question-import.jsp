@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="form-line upload-question-group">
 								<span class="form-label">选择题库：</span>
 								<select class="df-input-narrow">
-									<option value="-1">-- 请选择 --</option>
+									<option value="0">-- 请选择 --</option>
 										<c:forEach items="${fieldList }" var="item">
 											<option value="${item.fieldId }">${item.fieldName }</option>
 										</c:forEach>
@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="form-line template-download">
 								<span class="form-label">下载模板：</span>
-								<a href="resources/template/question.xls" style="color:rgb(22,22,22);text-decoration: underline;">点击下载</a>
+								<a href="resources/template/question.xlsx" style="color:rgb(22,22,22);text-decoration: underline;">点击下载</a>
 							</div>
 							<div class="form-line control-group">
 								<span class="form-label"><span class="warning-label">*</span>上传文件：</span>
