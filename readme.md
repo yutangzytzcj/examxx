@@ -24,7 +24,7 @@
 ||用户管理|教师或管理员可以管理目前网站的注册用户。|
 
 ##使用
-- [Exam++](http://www.examxx.net)采用了`mysql`数据库，因此，请安装`mysql`（5.0以上版本），安装完毕后，请创建一个名为`examxx`的数据库，并将doc目录下的数据库文件`examxx.sql`导入到数据库。
+- [Exam++](http://www.examxx.net)采用了mysql数据库，因此，请安装mysql（5.0以上版本），安装完毕后，请创建一个名为examxx的数据库，并将doc目录下的数据库文件`examxx.sql`导入到数据库。
 - 请将examxx.war拷贝到tomcat目录下的webapps目录中。
 - tomcat启动后，war包自动部署到tomcat，打开webapps\examxx\WEB-INF\spring\root-context.xml修改数据库配置，填写你自己的数据库信息，如下：
 
