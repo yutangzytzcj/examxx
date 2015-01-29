@@ -59,7 +59,7 @@
 					
 				</td>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
-					用户可以通过用户名邮箱注册网站，并且通过注册的用户登陆网站。
+
 				</td>
 			</tr>
 			<tr>
