@@ -29,7 +29,7 @@
 - tomcat启动后，war包自动部署到tomcat，打开webapps\examxx\WEB-INF\spring\root-context.xml修改数据库配置，填写你自己的数据库信息，如下：
 
 ![](http://git.oschina.net/ocelot/examxx/raw/master/doc/111.png)
-- 启动tomcat服务器，输入http://localhost:8080/examxx 进入到exam++主页面。如果能正常打开，则进度到第5步，否则，请检查服务器配置或数据库配置是否正确。
+- 启动tomcat服务器，输入http://localhost:8080/examxx 进入到exam++主页面。如果能正常打开，则进度到第下一步，否则，请检查服务器配置或数据库配置是否正确。
 
 ![](http://git.oschina.net/ocelot/examxx/raw/master/doc/222.jpg)
 - 点击右上角登录按钮，输入用户名admin和密码123456即可登录系统。
