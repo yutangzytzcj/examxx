@@ -191,7 +191,7 @@
 	4、	启动tomcat服务器，输入http://localhost:8080/examxx进入到exam++主页面。如果能正常打开，则进度到第5步，否则，请检查服务器配置或数据库配置是否正确。
 </p>
 	<img src="ocelot/examxx/raw/master/doc/222.jpg" alt="" />
-	![](ocelot/examxx/raw/master/doc/222.jpg)
+![](ocelot/examxx/raw/master/doc/222.jpg)
 <p>
 	5、	点击右上角登录按钮，输入用户名admin和密码123456即可登录系统。
 </p>
