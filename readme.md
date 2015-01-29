@@ -1,6 +1,6 @@
-# Exam++
+# [Exam++](http://www.examxx.net)
 
-**Exam++**是国内首款基于`JAVA`与`MYSQL`开发的网络考试系统。它可以稳定、顺畅的运行在Windows与Linux平台上。您可以通过它快捷方便的创建试题和题库，发布试卷，组织考试，系统自动批改。高度的可配置性和灵活性使得它可以被应用于很多领域。
+**[Exam++](http://www.examxx.net)**是国内首款基于`JAVA`与`MYSQL`开发的网络考试系统。它可以稳定、顺畅的运行在Windows与Linux平台上。您可以通过它快捷方便的创建试题和题库，发布试卷，组织考试，系统自动批改。高度的可配置性和灵活性使得它可以被应用于很多领域。
 
 软件采用GPL协议，完全开放且免费，并且有固定的开发团队提供技术支持
 ![](http://static.oschina.net/uploads/space/2015/0112/103947_v1r5_135389.png)
@@ -27,13 +27,15 @@
 - Exam++采用了mysql数据库，因此，请安装mysql（5.0以上版本），安装完毕后，请创建一个名为examxx的数据库，并将doc目录下的数据库文件examxx.sql导入到数据库。
 - 请将examxx.war拷贝到tomcat目录下的webapps目录中。
 - tomcat启动后，war包自动部署到tomcat，打开webapps\examxx\WEB-INF\spring\root-context.xml修改数据库配置，填写你自己的数据库信息，如下：
+
 ![](http://git.oschina.net/ocelot/examxx/raw/master/doc/111.png)
-- 启动tomcat服务器，输入http://localhost:8080/examxx进入到exam++主页面。如果能正常打开，则进度到第5步，否则，请检查服务器配置或数据库配置是否正确。
+- 启动tomcat服务器，输入http://localhost:8080/examxx 进入到exam++主页面。如果能正常打开，则进度到第5步，否则，请检查服务器配置或数据库配置是否正确。
+
 ![](http://git.oschina.net/ocelot/examxx/raw/master/doc/222.jpg)
 - 点击右上角登录按钮，输入用户名admin和密码123456即可登录系统。
 
 ##问题
-如果有任何问题或者建议请发email：`link4hy@126.com`,`mars-fox@163.com`。 建议与问题一经采纳即会将您的贡献大名列入Exam++的感谢名单中。
+如果有任何问题或者建议请发email：[link4hy@126.com](),[mars-fox@163.com]()。 建议与问题一经采纳即会将您的贡献大名列入[Exam++](http://www.examxx.net)的感谢名单中。
 
 ##修改记录
 - 2015-01-24 完善题库导入功能
