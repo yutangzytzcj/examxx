@@ -21,5 +21,6 @@ public class EncodeTest {
 	    System.out.println(new String("中文".getBytes("ISO8859_1")));//11
 	    System.out.println(new String("中文".getBytes("ISO8859_1"),"GB2312"));//12
 	    System.out.println(new String("中文".getBytes("ISO8859_1"),"ISO8859_1"));//13
+	    //test
 	}
 }
