@@ -175,6 +175,29 @@
 		</tbody>
 	</table>
 </div>
+
+<h2 id="document-h">使用</h2>
+<p>
+	1、	Exam++采用了mysql数据库，因此，请安装mysql（5.0以上版本），安装完毕后，请创建一个名为examxx的数据库，并将doc目录下的数据库文件examxx.sql导入到数据库。
+</p>
+<p>
+	2、	请将examxx.war拷贝到tomcat目录下的webapps目录中。
+</p>
+<p>
+	3、	tomcat启动后，war包自动部署到tomcat，打开webapps\examxx\WEB-INF\spring\root-context.xml修改数据库配置，填写你自己的数据库信息，如下：
+</p>
+	<img src="resources/images/document/111.png" />
+<p>
+	4、	启动tomcat服务器，输入http://localhost:8080/examxx进入到exam++主页面。如果能正常打开，则进度到第5步，否则，请检查服务器配置或数据库配置是否正确。
+</p>
+	<img src="resources/images/document/222.jpg" />
+<p>
+	5、	点击右上角登录按钮，输入用户名admin和密码123456即可登录系统。
+</p>
+<h2 id="document-h">问题</h2>
+<p>
+	如果有任何问题或者建议请发email：link4hy@126.com,mars-fox@163.com。 建议与问题一经采纳即会将您的贡献大名列入Exam++的感谢名单中。
+</p>						
 <h2 style="font-family:微软雅黑, 宋体, 'Open Sans', sans-serif;color:#666666;font-size:24px;font-weight:300 !important;background-color:#FFFFFF;">
 	<span style="font-size:14px;">##############################</span> 
 </h2>
