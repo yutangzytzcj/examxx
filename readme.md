@@ -56,7 +56,10 @@
 					随机练习
 				</td>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
-					从题库中随机取出指定数量的题目供学员练习。
+					
+				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					用户可以通过用户名邮箱注册网站，并且通过注册的用户登陆网站。
 				</td>
 			</tr>
 			<tr>
@@ -66,6 +69,9 @@
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					按照学员知识分布情况，分类进行练习，每次练习的结果会纳入到学员学习进度中。
 				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
+				</td>
 			</tr>
 			<tr>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
@@ -73,6 +79,9 @@
 				</td>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					学员做错过的题库会记录在错题库中，学员可以从中进行学习。
+				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
 				</td>
 			</tr>
 			<tr>
@@ -82,6 +91,9 @@
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					学员可以从模拟考试的分类中选择试卷进行考试。
 				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
+				</td>
 			</tr>
 			<tr>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
@@ -89,6 +101,9 @@
 				</td>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					学员可以从随机组卷的分类中选择试卷进行考试。
+				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
 				</td>
 			</tr>
 			<tr>
@@ -98,6 +113,9 @@
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					学员可以从专家试卷的分类中选择试卷进行考试。
 				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
+				</td>
 			</tr>
 			<tr>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
@@ -106,6 +124,9 @@
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					用图表方式对学员知识体系下所有的题目做统计分析，学员可以清楚的知道自己的知识点掌握情况。
 				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
+				</td>
 			</tr>
 			<tr>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
@@ -113,6 +134,9 @@
 				</td>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					参加过的考试会记录在考试历史中，通过点击可以查看答题情况，得分，和错题解答。
+				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
 				</td>
 			</tr>
 			<tr>
@@ -133,6 +157,9 @@
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					教师可以从题库中选择试题组成试卷供学员考试之用，组卷分为手动和自动两种。组卷完毕后还可以进一步调整试卷的分值，移除或添加试题。
 				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
+				</td>
 			</tr>
 			<tr>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
@@ -140,6 +167,9 @@
 				</td>
 				<td style="vertical-align:top;border:1px solid #DDDDDD;">
 					教师或管理员可以管理目前网站的注册用户。
+				</td>
+				<td style="vertical-align:top;border:1px solid #DDDDDD;">
+					
 				</td>
 			</tr>
 		</tbody>
