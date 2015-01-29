@@ -1,4 +1,4 @@
-# [Exam++](http://www.examxx.net)
+# [Exam++](http://www.examxx.net)[官方网站](http://www.examxx.net)
 
 - [Exam++](http://www.examxx.net)是国内首款基于`JAVA`与`MYSQL`开发的网络考试系统。它可以稳定、顺畅的运行在`Windows`与`Linux`平台上。您可以通过它快捷方便的创建试题和题库，发布试卷，组织考试，系统自动批改。高度的可配置性和灵活性使得它可以被应用于很多领域。
 
