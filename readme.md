@@ -35,7 +35,7 @@
 - 点击右上角登录按钮，输入用户名admin和密码123456即可登录系统。
 
 ##问题
-如果有任何问题或者建议请发email：[link4hy@126.com](),[mars-fox@163.com]()。 建议与问题一经采纳即会将您的贡献大名列入[Exam++](http://www.examxx.net)的感谢名单中。
+如果有任何问题或者建议请发email：[Ocelot：link4hy@126.com](link4hy@126.com),[Scar：mars-fox@163.com](mars-fox@163.com)。 建议与问题一经采纳即会将您的贡献大名列入[Exam++](http://www.examxx.net)的感谢名单中。
 
 ##修改记录
 - 2015-01-24 完善题库导入功能
