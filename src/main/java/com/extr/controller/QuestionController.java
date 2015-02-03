@@ -402,7 +402,7 @@ public class QuestionController {
 		
 		Page<Field> page = new Page<Field>();
 		page.setPageNo(index);
-		page.setPageSize(1);
+		page.setPageSize(8);
 		List<Field> fieldList = questionService.getAllField(page);
 		String pageStr = PagingUtil.getPageBtnlink(index,
 				page.getTotalPage());
@@ -416,7 +416,7 @@ public class QuestionController {
 		
 		Page<KnowledgePoint> page = new Page<KnowledgePoint>();
 		page.setPageNo(index);
-		page.setPageSize(1);
+		page.setPageSize(8);
 		
 		List<Field> fieldList = questionService.getAllField(null);
 		

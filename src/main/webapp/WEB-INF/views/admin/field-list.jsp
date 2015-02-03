@@ -195,6 +195,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- Bootstrap JS -->
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="resources/js/all.js"></script>
-		<script type="text/javascript" src="resources/js/question-lib.js"></script>
+		<script type="text/javascript" src="resources/js/field-list.js"></script>
 	</body>
 </html>
