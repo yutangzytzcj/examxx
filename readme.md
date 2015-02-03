@@ -41,5 +41,6 @@
 [![](http://pub.idqqimg.com/wpa/images/group.png)](http://shang.qq.com/wpa/qunwpa?idkey=b365bd36df1bd42ffcf8ab7b91fb93f21841548bcda6ec721de276bae9f72e35)
 
 ##修改记录
+- 2015-02-03 修改题库分页按钮无效的bug
 - 2015-01-24 完善题库导入功能
-- 2015-1-11 试题评论功能
+- 2015-01-11 试题评论功能
