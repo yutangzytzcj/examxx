@@ -103,19 +103,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul class="nav default-sidenav">
 							
 							<li class="active">
-								<a href="admin/field-list-1"> <i class="fa icon-book"></i> 题库列表 </a>
+								<a href="admin/field-list-1"> <i class="fa fa-book"></i> 题库列表 </a>
 							</li>
 							
 							<li>
-								<a href="admin/add-field"> <i class="fa icon-qrcode"></i> 添加题库 </a>
+								<a href="admin/add-field"> <i class="fa fa-qrcode"></i> 添加题库 </a>
 							</li>
 							
 							<li>
-								<a href="admin/point-list-0-1"> <i class="fa icon-sitemap"></i> 知识点列表 </a>
+								<a href="admin/point-list-0-1"> <i class="fa fa-sitemap"></i> 知识点列表 </a>
 							</li>
 							
 							<li>
-								<a href="admin/add-point"> <i class="fa icon-pencil"></i> 添加知识点 </a>
+								<a href="admin/add-point"> <i class="fa fa-pencil"></i> 添加知识点 </a>
+							</li>
+							
+							<li>
+								<a href="teacher/tag-list-1"> <i class="fa fa-tag"></i> 标签列表 </a>
+							</li>
+								
+							<li>
+								<a href="teacher/add-tag"> <i class="fa fa-plus"></i> 添加标签 </a>
 							</li>
 						</ul>
 

@@ -29,6 +29,7 @@ import com.extr.controller.domain.QuestionQueryResult;
 import com.extr.domain.question.Field;
 import com.extr.domain.question.KnowledgePoint;
 import com.extr.domain.question.Question;
+import com.extr.domain.question.Tag;
 import com.extr.file.util.FileUploadUtil;
 import com.extr.security.UserInfo;
 import com.extr.service.ExamService;
@@ -508,6 +509,45 @@ public class QuestionController {
 		}catch(RuntimeException e){
 			message.setResult(e.getClass().getName() + ":" + e.getMessage());
 			message.setMessageInfo(e.getMessage());
+		}
+		
+		return message;
+	}
+	
+	@RequestMapping(value = "/teacher/tag-list-{index}", method = RequestMethod.GET)
+	public String tagListPage(Model model,@PathVariable("index") int index){
+		
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		Page<Tag> page = new Page<Tag>();
+		page.setPageNo(index);
+		page.setPageSize(8);
+		List<Tag> tagList = questionService.getTagByUserId(userInfo.getUserid(), page);
+		String pageStr = PagingUtil.getPageBtnlink(index,
+				page.getTotalPage());
+		model.addAttribute("tagList", tagList);
+		model.addAttribute("pageStr", pageStr);
+		return "teacher/tag-list";
+	}
+	
+	@RequestMapping(value = "/teacher/add-tag", method = RequestMethod.GET)
+	public String addTagPage(Model model){
+		
+		return "teacher/add-tag";
+	}
+	
+	@RequestMapping(value = "/teacher/tag-add", method = RequestMethod.POST)
+	public @ResponseBody Message addTag(@RequestBody Tag tag){
+		
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		tag.setCreator(userInfo.getUserid());
+		Message message = new Message();
+		try{
+			questionService.addTag(tag);
+		}catch(Exception e){
+			message.setResult(e.getClass().getName());
+			e.printStackTrace();
 		}
 		
 		return message;

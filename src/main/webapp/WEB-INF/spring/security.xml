@@ -16,7 +16,7 @@
 		<security:intercept-url pattern="/admin/**"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/teacher/**"
-			access="hasRole('ROLE_TEACHER')" />
+			access="hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')" />
 		<security:intercept-url pattern="/student/**"
 			access="hasRole('ROLE_STUDENT')" />
 		<security:intercept-url pattern="/api2/**"

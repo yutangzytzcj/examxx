@@ -343,4 +343,16 @@
 		select min(a.field_id) from et_field a,et_knowledge_point b
 		where a.field_id=b.field_id
 	</select>
+	
+	<select id="getTagByUserId" resultType="com.extr.domain.question.Tag">
+		select tag_id tagId,tag_name tagName,is_private privatee,create_time createTime,
+		creator,memo from et_tag where (creator=#{userId} or is_private=0)
+	</select>
+	
+	<insert id="addTag" parameterType="com.extr.domain.question.Tag" useGeneratedKeys="true"
+	keyProperty="tagId">
+		insert into et_tag(tag_name,creator,memo,is_private)
+		values
+		(#{tagName},#{creator},#{memo},#{privatee})
+	</insert>
 </mapper>
