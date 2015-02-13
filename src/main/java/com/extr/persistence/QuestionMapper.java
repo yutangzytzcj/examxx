@@ -12,6 +12,7 @@ import com.extr.domain.question.KnowledgePoint;
 import com.extr.domain.question.Question;
 import com.extr.domain.question.QuestionStruts;
 import com.extr.domain.question.QuestionType;
+import com.extr.domain.question.Tag;
 import com.extr.domain.question.UserQuestionHistory;
 import com.extr.util.Page;
 
@@ -131,4 +132,21 @@ public interface QuestionMapper {
 	 * @return
 	 */
 	public Integer getMinFieldId();
+	
+	/**
+     * 获取tag列表，包含所有公有的或者自己私有的
+     *
+     * @param userId
+     * @param page
+     * @return
+     */
+    public List<Tag> getTagByUserId(@Param("userId") int userId,
+                                    @Param("page") Page<Tag> page);
+
+    /**
+     * 增加一个标签
+     *
+     * @param tag
+     */
+    public void addTag(Tag tag);
 }

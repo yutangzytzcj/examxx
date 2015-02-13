@@ -25,6 +25,7 @@ import com.extr.domain.question.Question;
 import com.extr.domain.question.QuestionContent;
 import com.extr.domain.question.QuestionStruts;
 import com.extr.domain.question.QuestionType;
+import com.extr.domain.question.Tag;
 import com.extr.domain.question.UserQuestionHistory;
 import com.extr.file.util.ExcelUtil;
 import com.extr.persistence.QuestionMapper;
@@ -337,5 +338,17 @@ public class QuestionServiceImpl implements QuestionService {
 	public Integer getMinFieldId() {
 		// TODO Auto-generated method stub
 		return questionMapper.getMinFieldId();
+	}
+
+	@Override
+	public List<Tag> getTagByUserId(int userId, Page<Tag> page) {
+		// TODO Auto-generated method stub
+		return questionMapper.getTagByUserId(userId, page);
+	}
+
+	@Override
+	public void addTag(Tag tag) {
+		// TODO Auto-generated method stub
+		questionMapper.addTag(tag);
 	}
 }
