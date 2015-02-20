@@ -35,6 +35,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.question-name-td{
 				width:300px;
 			}
+			.change-property{
+				cursor:pointer;
+			}
+			.add-tag-btn{
+				cursor:pointer;
+			}
 		</style>
 	</head>
 	<body>
@@ -219,7 +225,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table class="table-striped table">
 									<thead>
 										<tr>
-											<td></td><td>ID</td><td class="question-name-td">试题名称</td><td>试题类型</td><td>专业</td><td>知识类</td><td>关键字</td><td>操作</td>
+											<td></td><td>ID</td><td class="question-name-td" style="width:240px">试题名称</td><td style="width:60px">试题类型</td><td>专业</td><td>知识类</td><!-- <td>关键字</td> --><td>操作</td>
 										</tr>
 									</thead>
 									<tbody>
@@ -231,11 +237,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												</td><td>${items.id }</td>
 												<td>
 													<a href="admin/question-preview/${items.id }" target="_blank" title="预览">${items.name }</a>
+													<!-- 此处改成标签 -->
 													<span class="examing-point">${items.examingPoint} </span>
 												</td>
 												
 												
-												<td>${items.questionTypeName }</td><td>${items.fieldName }</td><td>${items.pointName }</td><td>${items.keyword }</td>
+												<td>${items.questionTypeName }</td><td>${items.fieldName }</td><td>${items.pointName }</td>
+												<%-- <td>${items.keyword }</td> --%>
 												<td style="width:50px;">
 													<a class="change-property">修改</a>
 												</td>
@@ -267,11 +275,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														     		<div class="form-line exampaper-type" id="aq-course2">
 																		<span class="form-label"><span class="warning-label">*</span>知识类：</span>
 																		<select id="point-from-select" class="df-input-narrow">
-																			
-																			
 																		</select><span class="form-message"></span>
 																	</div>
-																	
+																	<div class="form-line exampaper-type" id="aq-tag">
+																		<span class="form-label"><span class="warning-label">*</span>标签：</span>
+																		<select id="point-from-select" class="df-input-narrow">
+																			<option value="1">测试标签1</option>
+																			<option value="2">测试标签2</option>
+																			<option value="3">测试标签3</option>
+																			<option value="4">测试标签4</option>
+																			<option value="5">测试标签5</option>
+																			<option value="6">测试标签6</option>
+																			<option value="7">测试标签7</option>
+																			<option value="8">测试标签8</option>
+																		</select><a class="add-tag-btn">添加</a><span class="form-message"></span>
+																		
+																		<div>
+																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
+																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
+																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
+																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
+																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
+																			
+																		</div>
+																	</div>
 																</form>
 														     </div>
 														     <div class="modal-footer">
