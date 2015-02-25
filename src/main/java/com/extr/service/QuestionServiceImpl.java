@@ -351,4 +351,11 @@ public class QuestionServiceImpl implements QuestionService {
 		// TODO Auto-generated method stub
 		questionMapper.addTag(tag);
 	}
+
+	@Override
+	public List<Tag> getQuestionTagByQuestionIdAndUserId(int questionId,
+			int userId, Page<Tag> page) {
+		// TODO Auto-generated method stub
+		return questionMapper.getQuestionTagByQuestionIdAndUserId(questionId, userId, page);
+	}
 }

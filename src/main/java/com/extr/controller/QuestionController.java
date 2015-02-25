@@ -552,4 +552,14 @@ public class QuestionController {
 		
 		return message;
 	}
+	
+	@RequestMapping(value = "/teacher/question-tag/{questionId}", method = RequestMethod.POST)
+	public @ResponseBody Message getQuestionTag(@PathVariable("questionId") int questionId){
+		Message message = new Message();
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		List<Tag> tagList = questionService.getQuestionTagByQuestionIdAndUserId(questionId, userInfo.getUserid(), null);
+		message.setObject(tagList);
+		return message;
+	}
 }

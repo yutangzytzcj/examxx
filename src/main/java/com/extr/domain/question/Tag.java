@@ -1,10 +1,15 @@
 package com.extr.domain.question;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Tag {
+public class Tag implements Serializable {
 
-    private int tagId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4266590307234837998L;
+	private int tagId;
     private String tagName;
     private Date createTime;
     private int creator;

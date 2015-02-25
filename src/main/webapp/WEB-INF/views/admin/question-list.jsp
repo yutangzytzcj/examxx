@@ -290,7 +290,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																			<option value="8">测试标签8</option>
 																		</select><a class="add-tag-btn">添加</a><span class="form-message"></span>
 																		
-																		<div>
+																		<div class="q-label-list">
 																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
 																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
 																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
@@ -352,7 +352,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$("#change-property-modal").modal({backdrop:true,keyboard:true});
 					var paper_id =  $(this).parent().parent().find(":checkbox").val();
 					$("#add-update-questionid").text(paper_id);
-					
+					$.ajax({
+						headers : {
+							'Accept' : 'application/json',
+							'Content-Type' : 'application/json'
+						},
+						type : "GET",
+						url : "teacher/question-tag/" + $("#add-update-questionid").text(),
+						success : function(message, tst, jqXHR) {
+							if (!util.checkSessionOut(jqXHR))
+								return false;
+							if (message.result == "success") {
+								//将message.object里面的内容写到 div（class=q-label-list）里面
+							} else {
+								util.error("操作失败请稍后尝试:" + message.result);
+							}
+
+						},
+						error : function(jqXHR, textStatus) {
+							util.error("操作失败请稍后尝试");
+						}
+					});					
 				});
 				$("#update-exampaper-btn").click(function(){
 					

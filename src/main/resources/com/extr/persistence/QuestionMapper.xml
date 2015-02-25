@@ -355,4 +355,10 @@
 		values
 		(#{tagName},#{creator},#{memo},#{privatee})
 	</insert>
+	
+	<select id="getQuestionTagByQuestionIdAndUserId" resultType="com.extr.domain.question.Tag">
+		select tag_id tagId,tag_name tagName,is_private privatee,create_time createTime,
+		creator,memo from et_tag where (creator=#{userId} or is_private=0)
+		and tag_id in(select tag_id from et_question_2_tag where question_id=#{questionId})
+	</select>
 </mapper>

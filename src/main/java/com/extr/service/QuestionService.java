@@ -3,8 +3,6 @@ package com.extr.service;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.extr.controller.domain.QuestionFilter;
 import com.extr.controller.domain.QuestionImproveResult;
 import com.extr.controller.domain.QuestionQueryResult;
@@ -154,4 +152,14 @@ public interface QuestionService {
      * @param tag
      */
     public void addTag(Tag tag);
+    
+    /**
+	 * 获取试题的tag，只包含公有tag和自己的私有tag
+	 * @param questionId
+	 * @param userId
+	 * @param page
+	 * @return
+	 */
+	public List<Tag> getQuestionTagByQuestionIdAndUserId(
+			int questionId, int userId, Page<Tag> page);
 }

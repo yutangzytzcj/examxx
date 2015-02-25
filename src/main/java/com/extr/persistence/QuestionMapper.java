@@ -25,7 +25,8 @@ public interface QuestionMapper {
 	List<Field> getAllField(@Param("page") Page<Field> page);
 
 	List<KnowledgePoint> getKnowledgePointByFieldId(
-			@Param("fieldId") int fieldId,@Param("page") Page<KnowledgePoint> page);
+			@Param("fieldId") int fieldId,
+			@Param("page") Page<KnowledgePoint> page);
 
 	List<QuestionQueryResult> getQuestionAnalysisListByIdList(
 			@Param("array") List<Integer> idList);
@@ -79,10 +80,9 @@ public interface QuestionMapper {
 	public KnowledgePoint getKnowledgePointByName(
 			@Param("pointName") String pointName,
 			@Param("fieldName") String fieldName);
-	
+
 	public KnowledgePoint getKnowledgePointByPointNameAndFieldId(
-			@Param("pointName") String pointName,
-			@Param("fieldId") int fieldId);
+			@Param("pointName") String pointName, @Param("fieldId") int fieldId);
 
 	/**
 	 * 添加学员练习试题的记录
@@ -118,35 +118,48 @@ public interface QuestionMapper {
 	public List<QuestionQueryResult> getQuestionAnalysisListByFieldIdList(
 			@Param("array") List<Integer> fieldIdList,
 			@Param("typeIdList") List<Integer> questionTypeIdList);
-	
+
 	public void addField(Field field);
-	
+
 	public void addKnowledgePoint(KnowledgePoint point);
-	
+
 	public void deleteFieldByIdList(@Param("array") List<Integer> idList);
-	
-	public void deleteKnowledgePointByIdList(@Param("array") List<Integer> idList);
-	
+
+	public void deleteKnowledgePointByIdList(
+			@Param("array") List<Integer> idList);
+
 	/**
 	 * 获取一个最小的，具有point的fieldid，用于首页取默认field
+	 * 
 	 * @return
 	 */
 	public Integer getMinFieldId();
-	
-	/**
-     * 获取tag列表，包含所有公有的或者自己私有的
-     *
-     * @param userId
-     * @param page
-     * @return
-     */
-    public List<Tag> getTagByUserId(@Param("userId") int userId,
-                                    @Param("page") Page<Tag> page);
 
-    /**
-     * 增加一个标签
-     *
-     * @param tag
-     */
-    public void addTag(Tag tag);
+	/**
+	 * 获取tag列表，包含所有公有的或者自己私有的
+	 * 
+	 * @param userId
+	 * @param page
+	 * @return
+	 */
+	public List<Tag> getTagByUserId(@Param("userId") int userId,
+			@Param("page") Page<Tag> page);
+
+	/**
+	 * 增加一个标签
+	 * 
+	 * @param tag
+	 */
+	public void addTag(Tag tag);
+
+	/**
+	 * 获取试题的tag
+	 * @param questionId
+	 * @param userId
+	 * @param page
+	 * @return
+	 */
+	public List<Tag> getQuestionTagByQuestionIdAndUserId(
+			@Param("questionId") int questionId, @Param("userId") int userId,
+			@Param("page") Page<Tag> page);
 }
