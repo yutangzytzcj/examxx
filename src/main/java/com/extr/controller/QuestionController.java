@@ -29,6 +29,7 @@ import com.extr.controller.domain.QuestionQueryResult;
 import com.extr.domain.question.Field;
 import com.extr.domain.question.KnowledgePoint;
 import com.extr.domain.question.Question;
+import com.extr.domain.question.QuestionTag;
 import com.extr.domain.question.Tag;
 import com.extr.file.util.FileUploadUtil;
 import com.extr.security.UserInfo;
@@ -73,7 +74,9 @@ public class QuestionController {
 			@PathVariable("searchParam") String searchParam,
 			@PathVariable("page") int page) {
 		
-		
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+			    .getAuthentication()
+			    .getPrincipal();
 		QuestionFilter qf = new QuestionFilter();
 		qf.setFieldId(fieldId);
 		qf.setKnowledge(knowledge);
@@ -92,8 +95,11 @@ public class QuestionController {
 		String pageStr = PagingUtil.getPageBtnlink(page,
 				pageModel.getTotalPage());
 
-		model.addAttribute("fieldList", questionService.getAllField(null));
+		List<Field> fieldList = questionService.getAllField(null);
+		model.addAttribute("fieldList", fieldList);
 
+		/*if(fieldList.size() > 0)
+			fieldId = fieldList.get(0).getFieldId();*/
 		model.addAttribute("knowledgeList",
 				questionService.getKnowledgePointByFieldId(fieldId,null));
 
@@ -103,7 +109,7 @@ public class QuestionController {
 		model.addAttribute("questionFilter", qf);
 		model.addAttribute("questionList", questionList);
 		model.addAttribute("pageStr", pageStr);
-		
+		model.addAttribute("tagList", questionService.getTagByUserId(userInfo.getUserid(), null));
 		//保存筛选信息，删除后跳转页面时使用
 		model.addAttribute("fieldId", fieldId);
 		model.addAttribute("knowledge", knowledge);
@@ -194,9 +200,9 @@ public class QuestionController {
 		return "admin/question-add";
 	}
 
-	@RequestMapping(value = "/admin/get-knowledge-point", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/get-knowledge-point/{fieldId}", method = RequestMethod.GET)
 	public @ResponseBody
-	Message getQuestionPointByFieldId(@RequestBody int fieldId) {
+	Message getQuestionPointByFieldId(@PathVariable int fieldId) {
 		Message message = new Message();
 		HashMap<Integer, String> pointMap = new HashMap<Integer, String>();
 		List<KnowledgePoint> pointList = questionService
@@ -379,18 +385,19 @@ public class QuestionController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/admin/question-update/{questionId}/{pointId}", method = RequestMethod.GET)
-	public @ResponseBody Message updateQuestion(Model model, HttpServletRequest request, @PathVariable int questionId, @PathVariable int pointId) {
+	@RequestMapping(value = "/admin/question-update/{questionId}/{pointId}", method = RequestMethod.POST)
+	public @ResponseBody Message updateQuestion(@PathVariable int questionId, @PathVariable int pointId, @RequestBody List<QuestionTag> questionTagList) {
 		
 		Message message = new Message();
-		
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
 		Question question = new Question();
 		question.setId(questionId);
 		List<Integer> pointIdList = new ArrayList<Integer>();
 		pointIdList.add(pointId);
 		question.setPointList(pointIdList);
 		try{
-			questionService.updateQuestionPoint(question);
+			questionService.updateQuestionPoint(question,userInfo.getUserid(),questionTagList);
 		}catch(Exception e){
 			message.setResult(e.getClass().getName());
 		}
@@ -553,13 +560,29 @@ public class QuestionController {
 		return message;
 	}
 	
-	@RequestMapping(value = "/teacher/question-tag/{questionId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/teacher/question-tag/{questionId}", method = RequestMethod.GET)
 	public @ResponseBody Message getQuestionTag(@PathVariable("questionId") int questionId){
 		Message message = new Message();
 		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
 				.getAuthentication().getPrincipal();
-		List<Tag> tagList = questionService.getQuestionTagByQuestionIdAndUserId(questionId, userInfo.getUserid(), null);
+		List<QuestionTag> tagList = questionService.getQuestionTagByQuestionIdAndUserId(questionId, userInfo.getUserid(), null);
 		message.setObject(tagList);
 		return message;
 	}
+	
+	@RequestMapping(value = "/teacher/add-question-tag", method = RequestMethod.POST)
+	public @ResponseBody Message addQuestionTag(@RequestBody int questionId,@RequestBody List<QuestionTag> questionTagList){
+		Message message = new Message();
+		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		try{
+			questionService.addQuestionTag(questionId, userInfo.getUserid(), questionTagList);
+		}catch(Exception e){
+			e.printStackTrace();
+			message.setResult(e.getClass().getName());
+		}
+		
+		return message;
+	}
+	
 }

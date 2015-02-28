@@ -3,6 +3,8 @@ package com.extr.service;
 import java.util.HashMap;
 import java.util.List;
 
+
+
 import com.extr.controller.domain.QuestionFilter;
 import com.extr.controller.domain.QuestionImproveResult;
 import com.extr.controller.domain.QuestionQueryResult;
@@ -10,6 +12,7 @@ import com.extr.domain.question.Field;
 import com.extr.domain.question.KnowledgePoint;
 import com.extr.domain.question.Question;
 import com.extr.domain.question.QuestionStruts;
+import com.extr.domain.question.QuestionTag;
 import com.extr.domain.question.QuestionType;
 import com.extr.domain.question.Tag;
 import com.extr.domain.question.UserQuestionHistory;
@@ -160,6 +163,22 @@ public interface QuestionService {
 	 * @param page
 	 * @return
 	 */
-	public List<Tag> getQuestionTagByQuestionIdAndUserId(
-			int questionId, int userId, Page<Tag> page);
+	public List<QuestionTag> getQuestionTagByQuestionIdAndUserId(
+			int questionId, int userId, Page<QuestionTag> page);
+	
+	/**
+	 * 给题目打标签
+	 * @param questionId
+	 * @param userId
+	 */
+	public void addQuestionTag(int questionId, int userId, List<QuestionTag> questionTagList);
+	
+	/**
+	 * 重载，整合了tag的功能
+	 * @see com.extr.service.QuestionService#updateQuestionPoint(Question question)
+	 * @param question
+	 * @param userId
+	 * @param questionTagList
+	 */
+	public void updateQuestionPoint(Question question,int userId, List<QuestionTag> questionTagList);
 }

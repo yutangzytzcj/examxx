@@ -275,19 +275,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														     		<div class="form-line exampaper-type" id="aq-course2">
 																		<span class="form-label"><span class="warning-label">*</span>知识类：</span>
 																		<select id="point-from-select" class="df-input-narrow">
+																			<c:forEach items="${knowledgeList}" var="item">
+																				<option value="${item.pointId}">${item.pointName} </option>
+																			</c:forEach>
 																		</select><span class="form-message"></span>
 																	</div>
 																	<div class="form-line exampaper-type" id="aq-tag">
 																		<span class="form-label"><span class="warning-label">*</span>标签：</span>
-																		<select id="point-from-select" class="df-input-narrow">
-																			<option value="1">测试标签1</option>
-																			<option value="2">测试标签2</option>
-																			<option value="3">测试标签3</option>
-																			<option value="4">测试标签4</option>
-																			<option value="5">测试标签5</option>
-																			<option value="6">测试标签6</option>
-																			<option value="7">测试标签7</option>
-																			<option value="8">测试标签8</option>
+																		<select id="tag-from-select" class="df-input-narrow">
+																			<c:forEach items="${tagList }" var="item">
+																				<option value="${item.tagId }">${item.tagName }</option>
+																			</c:forEach>
+																			
 																		</select><a class="add-tag-btn">添加</a><span class="form-message"></span>
 																		
 																		<div class="q-label-list">
@@ -358,36 +357,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							'Content-Type' : 'application/json'
 						},
 						type : "GET",
-						url : "teacher/question-tag/" + $("#add-update-questionid").text(),
+						url : "teacher/question-tag/" + paper_id,
 						success : function(message, tst, jqXHR) {
 							if (!util.checkSessionOut(jqXHR))
 								return false;
 							if (message.result == "success") {
 								//将message.object里面的内容写到 div（class=q-label-list）里面
+								var innerHtml = "";
+								$.each(message.object,function(index,element){
+									innerHtml += "<span id=\"add-point-btn\" class=\"label label-info q-label-item\"><input class=\"q-label-item-id\" type=\"hidden\" value=\"" + element.tagId + "\">" + element.tagName + "  <i class=\"fa fa-times\"></i>	</span>";
+								});
+								$(".q-label-list").html(innerHtml);
 							} else {
-								util.error("操作失败请稍后尝试:" + message.result);
+								util.error("操作失败请稍后尝试1111:" + message.result);
 							}
 
 						},
 						error : function(jqXHR, textStatus) {
-							util.error("操作失败请稍后尝试");
+							util.error("操作失败请稍后尝试222");
 						}
 					});					
 				});
+				
+				$(".add-tag-btn").click(function(){
+					$(".q-label-list").append();
+				});
+				
 				$("#update-exampaper-btn").click(function(){
 					
 					if($("#point-from-select").val()==null||$("#point-from-select").val()==""){
 						util.error("请选择知识类");
 					}
 					$("#point-from-select").val();
-					
+					var data = new Array();
+					$(".q-label-item-id").each(function(){
+						var tag = new Object();
+						tag.tagId = $(this).val();
+						tag.questionId = $("#add-update-questionid").text();
+						data.push(tag);
+					});
 					$.ajax({
 						headers : {
 							'Accept' : 'application/json',
 							'Content-Type' : 'application/json'
 						},
-						type : "GET",
+						type : "POST",
 						url : "admin/question-update/" + $("#add-update-questionid").text() + "/" +  $("#point-from-select").val(),
+						data : JSON.stringify(data),
 						success : function(message, tst, jqXHR) {
 							if (!util.checkSessionOut(jqXHR))
 								return false;

@@ -356,9 +356,31 @@
 		(#{tagName},#{creator},#{memo},#{privatee})
 	</insert>
 	
-	<select id="getQuestionTagByQuestionIdAndUserId" resultType="com.extr.domain.question.Tag">
+	<select id="getQuestionTagByQuestionIdAndUserId" resultType="com.extr.domain.question.QuestionTag">
 		select tag_id tagId,tag_name tagName,is_private privatee,create_time createTime,
 		creator,memo from et_tag where (creator=#{userId} or is_private=0)
 		and tag_id in(select tag_id from et_question_2_tag where question_id=#{questionId})
 	</select>
+	
+	<insert id="addQuestionTag" parameterType="com.extr.domain.question.QuestionTag" useGeneratedKeys="true"
+	keyProperty="questionTagId">
+		insert into et_question_2_tag(question_id,tag_id,creator)
+		values
+		<foreach collection="array" index="index" item="item" open="(" close=")" separator=",">
+			#{item.questionid},#{item.tagId},#{item.creator}
+		</foreach>
+		where not exists(select 1 from et_question_2_tag b where (b.question_id,b.tag_id) in(
+		<foreach collection="array" index="index" item="item" open="(" close=")" separator=",">
+			#{item.questionid},#{item.tagId}
+		</foreach>
+		))
+	</insert>
+	
+	<delete id="deleteQuestionTag">
+		delete from et_question_2_tag where tag_id not in(
+		<foreach collection="array" index="index" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+		) and question_id=#{questionId}
+	</delete>
 </mapper>

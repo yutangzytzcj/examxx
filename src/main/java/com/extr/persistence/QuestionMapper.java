@@ -11,6 +11,7 @@ import com.extr.domain.question.Field;
 import com.extr.domain.question.KnowledgePoint;
 import com.extr.domain.question.Question;
 import com.extr.domain.question.QuestionStruts;
+import com.extr.domain.question.QuestionTag;
 import com.extr.domain.question.QuestionType;
 import com.extr.domain.question.Tag;
 import com.extr.domain.question.UserQuestionHistory;
@@ -159,7 +160,14 @@ public interface QuestionMapper {
 	 * @param page
 	 * @return
 	 */
-	public List<Tag> getQuestionTagByQuestionIdAndUserId(
+	public List<QuestionTag> getQuestionTagByQuestionIdAndUserId(
 			@Param("questionId") int questionId, @Param("userId") int userId,
-			@Param("page") Page<Tag> page);
+			@Param("page") Page<QuestionTag> page);
+	
+	/**
+	 * 给题目打标签
+	 */
+	public void addQuestionTag(@Param("array") List<QuestionTag> array);
+	
+	public void deleteQuestionTag(@Param("questionId") int questionId,@Param("userId") int userId,@Param("array") List<QuestionTag> array);
 }

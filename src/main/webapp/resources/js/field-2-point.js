@@ -8,9 +8,8 @@ $(function(){
 					'Accept' : 'application/json',
 					'Content-Type' : 'application/json'
 				},
-				type : "POST",
-				url : "admin/get-knowledge-point",
-				data : selection.val(),
+				type : "GET",
+				url : "admin/get-knowledge-point/" + selection.val(),
 				success : function(message,tst,jqXHR) {
 					if(!util.checkSessionOut(jqXHR))return false;
 					if (message.result == "success") {
