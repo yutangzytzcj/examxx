@@ -284,7 +284,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		<span class="form-label"><span class="warning-label">*</span>标签：</span>
 																		<select id="tag-from-select" class="df-input-narrow">
 																			<c:forEach items="${tagList }" var="item">
-																				<option value="${item.tagId }">${item.tagName }</option>
+																				<option value="${item.tagId }">${item.privatee } ${item.tagName }</option>
 																			</c:forEach>
 																			
 																		</select><a class="add-tag-btn">添加</a><span class="form-message"></span>
@@ -380,7 +380,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				});
 				
 				$(".add-tag-btn").click(function(){
-					$(".q-label-list").append();
+					var label_ids = $(".q-label-item-id");
+					var flag = 0;
+					label_ids.each(function(){
+						if($(this).val() == $("#tag-from-select").val())
+							flag = 1;
+					});
+					if(flag == 0)
+						$(".q-label-list").append("<span id=\"add-point-btn\" class=\"label label-info q-label-item\"><input class=\"q-label-item-id\" type=\"hidden\" value=\"" + $("#tag-from-select :selected").val() + "\">" + $("#tag-from-select :selected").text() + "  <i class=\"fa fa-times\"></i>	</span>");
+					else{
+						util.error("不能重复添加");
+					}
 				});
 				
 				$("#update-exampaper-btn").click(function(){
