@@ -377,5 +377,6 @@
 			#{item}
 		</foreach>
 		 and question_id=#{questionId}
+		 
 	</delete>
 </mapper>

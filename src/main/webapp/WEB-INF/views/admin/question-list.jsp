@@ -400,6 +400,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 					$("#point-from-select").val();
 					var data = new Array();
+					
 					$(".q-label-item-id").each(function(){
 						var tag = new Object();
 						tag.tagId = $(this).val();
