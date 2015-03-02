@@ -284,18 +284,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		<span class="form-label"><span class="warning-label">*</span>标签：</span>
 																		<select id="tag-from-select" class="df-input-narrow">
 																			<c:forEach items="${tagList }" var="item">
-																				<option value="${item.tagId }">${item.privatee } ${item.tagName }</option>
+																				<option value="${item.tagId }" data-privatee="${item.privatee }" data-creator="${item.creator}" data-memo="${item.memo }" data-createtime="${item.createTime }">${item.tagName } </option>
 																			</c:forEach>
 																			
 																		</select><a class="add-tag-btn">添加</a><span class="form-message"></span>
 																		
 																		<div class="q-label-list">
-																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
-																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
-																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
-																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
-																			<span id="add-point-btn" class="label label-info q-label-item">标签1  <i class="fa fa-times"></i>	</span>
-																			
 																		</div>
 																	</div>
 																</form>
@@ -365,29 +359,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								//将message.object里面的内容写到 div（class=q-label-list）里面
 								var innerHtml = "";
 								$.each(message.object,function(index,element){
-									innerHtml += "<span id=\"add-point-btn\" class=\"label label-info q-label-item\"><input class=\"q-label-item-id\" type=\"hidden\" value=\"" + element.tagId + "\">" + element.tagName + "  <i class=\"fa fa-times\"></i>	</span>";
+									innerHtml += "<span class=\"label label-info q-label-item\" data-privatee=" 
+										+ element.privatee + " data-creator=" + element.creator
+										+" data-memo="+ element.memo
+										+" data-id="+ element.tagId
+										+ ">" + element.tagName + "  <i class=\"fa fa-times\"></i>	</span>";
 								});
 								$(".q-label-list").html(innerHtml);
 							} else {
-								util.error("操作失败请稍后尝试1111:" + message.result);
+								util.error("操作失败请稍后尝试:" + message.result);
 							}
 
 						},
 						error : function(jqXHR, textStatus) {
-							util.error("操作失败请稍后尝试222");
+							util.error("操作失败请稍后尝试");
 						}
 					});					
 				});
 				
 				$(".add-tag-btn").click(function(){
-					var label_ids = $(".q-label-item-id");
+					var label_ids = $(".q-label-item");
 					var flag = 0;
 					label_ids.each(function(){
-						if($(this).val() == $("#tag-from-select").val())
+						if($(this).data("id") == $("#tag-from-select").val())
 							flag = 1;
 					});
-					if(flag == 0)
-						$(".q-label-list").append("<span id=\"add-point-btn\" class=\"label label-info q-label-item\"><input class=\"q-label-item-id\" type=\"hidden\" value=\"" + $("#tag-from-select :selected").val() + "\">" + $("#tag-from-select :selected").text() + "  <i class=\"fa fa-times\"></i>	</span>");
+					if(flag == 0){
+						var selected = $("#tag-from-select").find("option:selected");
+					
+						$(".q-label-list").append("<span class=\"label label-info q-label-item\" data-privatee=" 
+								+ selected.data("privatee")  + " data-creator=" + selected.data("creator") 
+								+" data-memo="+ selected.data("memo") 
+								+" data-id="+ $("#tag-from-select").val()
+								+" data-createTime="+ selected.data("createTime") +">" 
+								+ $("#tag-from-select :selected").text() + "  <i class=\"fa fa-times\"></i>	</span>");
+					}
 					else{
 						util.error("不能重复添加");
 					}
@@ -401,9 +407,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$("#point-from-select").val();
 					var data = new Array();
 					
-					$(".q-label-item-id").each(function(){
+					$(".q-label-item").each(function(){
 						var tag = new Object();
-						tag.tagId = $(this).val();
+						tag.tagId = $(this).data("id");
 						tag.questionId = $("#add-update-questionid").text();
 						data.push(tag);
 					});
@@ -433,6 +439,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					});
 					
 					return false;
+				});
+				
+				$(".q-label-list").on("click",".fa",function(){
+					$(this).parent().remove();
 				});
 				
 				
