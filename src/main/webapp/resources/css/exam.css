@@ -546,4 +546,12 @@ a.navi-item-error{
 	
 }
 
+.q-label-item{
+	margin-right:5px;
+	padding:0px;
+}
+
+.q-label-item i{
+	cursor:pointer;
+}
 

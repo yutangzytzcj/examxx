@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-01-19 16:53:06
+Date: 2015-02-20 12:11:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,7 +80,7 @@ CREATE TABLE `et_field` (
   `memo` varchar(100) DEFAULT NULL,
   `state` decimal(1,0) NOT NULL DEFAULT '1' COMMENT '1 正常 0 废弃',
   PRIMARY KEY (`field_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of et_field
@@ -118,7 +118,7 @@ CREATE TABLE `et_knowledge_point` (
   PRIMARY KEY (`point_id`),
   KEY `fk_knowledge_field` (`field_id`),
   CONSTRAINT `et_knowledge_point_ibfk_1` FOREIGN KEY (`field_id`) REFERENCES `et_field` (`field_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of et_knowledge_point
@@ -207,7 +207,7 @@ CREATE TABLE `et_question` (
   KEY `question_type_id` (`question_type_id`),
   KEY `et_question_ibfk_5` (`creator`),
   CONSTRAINT `et_question_ibfk_1` FOREIGN KEY (`question_type_id`) REFERENCES `et_question_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8 COMMENT='试题';
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8 COMMENT='试题';
 
 -- ----------------------------
 -- Records of et_question
@@ -339,6 +339,7 @@ INSERT INTO `et_question` VALUES ('124', '在这种情况下可以加速', '<Que
 INSERT INTO `et_question` VALUES ('125', '遇到这种情况下可以从', '<QuestionContent>\n  <title>遇到这种情况下可以从右侧超车。</title>\n  <titleImg>files/question/admin/1419404584107.jpg</titleImg>\n  <choiceList/>\n  <choiceImgList/>\n</QuestionContent>', '3', null, '0', null, '0', '2014-12-24 15:03:09', 'admin', '2014-12-24 15:03:09', 'F', '2', '1', '1', '1', '', '', '', '');
 INSERT INTO `et_question` VALUES ('126', '驾驶机动车行经城市没', '<QuestionContent>\n  <title>驾驶机动车行经城市没有列车通过的铁路道口时允许超车。</title>\n  <titleImg></titleImg>\n  <choiceList/>\n  <choiceImgList/>\n</QuestionContent>', '3', null, '0', null, '0', '2014-12-24 15:03:41', 'admin', '2014-12-24 15:03:41', 'F', '2', '1', '1', '1', '', '', '', '');
 INSERT INTO `et_question` VALUES ('127', '驾驶机动车在隧道、陡', '<QuestionContent>\n  <title>驾驶机动车在隧道、陡坡等特殊路段不得超车。</title>\n  <titleImg></titleImg>\n  <choiceList/>\n  <choiceImgList/>\n</QuestionContent>', '3', null, '0', null, '0', '2014-12-24 15:04:03', 'admin', '2014-12-24 15:04:03', 'T', '2', '1', '1', '1', '', '', '', '');
+INSERT INTO `et_question` VALUES ('128', '安全行车、文明驾驶基...', '<QuestionContent>\n  <title>安全行车、文明驾驶基础知识</title>\n  <titleImg></titleImg>\n</QuestionContent>', '4', null, '0', null, '0', null, 'admin', '2015-01-24 20:59:16', '5', '2', '1', '1', '1', '安全行车、文明驾驶基础知识安全行车、文明驾驶基础知识', '安全行车、文明驾驶基础知识', '安全行车、文明驾驶基础知识', '安全行车、文明驾驶基础知识');
 
 -- ----------------------------
 -- Table structure for `et_question_2_point`
@@ -353,7 +354,7 @@ CREATE TABLE `et_question_2_point` (
   KEY `fk_point_111` (`point_id`),
   CONSTRAINT `et_question_2_point_ibfk_1` FOREIGN KEY (`point_id`) REFERENCES `et_knowledge_point` (`point_id`),
   CONSTRAINT `et_question_2_point_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `et_question` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of et_question_2_point
@@ -485,6 +486,28 @@ INSERT INTO `et_question_2_point` VALUES ('124', '124', '3');
 INSERT INTO `et_question_2_point` VALUES ('125', '125', '3');
 INSERT INTO `et_question_2_point` VALUES ('126', '126', '3');
 INSERT INTO `et_question_2_point` VALUES ('127', '127', '3');
+INSERT INTO `et_question_2_point` VALUES ('128', '128', '3');
+
+-- ----------------------------
+-- Table structure for `et_question_2_tag`
+-- ----------------------------
+DROP TABLE IF EXISTS `et_question_2_tag`;
+CREATE TABLE `et_question_2_tag` (
+  `question_tag_id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creator` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`question_tag_id`),
+  KEY `fk_question_tag_tid` (`tag_id`),
+  KEY `fk_question_tag_qid` (`question_id`),
+  CONSTRAINT `fk_question_tag_qid` FOREIGN KEY (`question_id`) REFERENCES `et_question` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_question_tag_tid` FOREIGN KEY (`tag_id`) REFERENCES `et_tag` (`tag_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of et_question_2_tag
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `et_question_type`
@@ -591,6 +614,28 @@ CREATE TABLE `et_r_user_role` (
 INSERT INTO `et_r_user_role` VALUES ('4', '1');
 
 -- ----------------------------
+-- Table structure for `et_tag`
+-- ----------------------------
+DROP TABLE IF EXISTS `et_tag`;
+CREATE TABLE `et_tag` (
+  `tag_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag_name` varchar(100) NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creator` int(11) NOT NULL,
+  `is_private` tinyint(1) NOT NULL DEFAULT '0',
+  `memo` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`tag_id`),
+  KEY `fk_tag_creator` (`creator`),
+  CONSTRAINT `fk_tag_creator` FOREIGN KEY (`creator`) REFERENCES `et_user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of et_tag
+-- ----------------------------
+INSERT INTO `et_tag` VALUES ('4', '11111111', '2015-02-10 17:28:16', '4', '0', '1111111111111');
+INSERT INTO `et_tag` VALUES ('5', '啊啊啊啊11', '2015-02-13 14:53:40', '4', '0', '111111111');
+
+-- ----------------------------
 -- Table structure for `et_user`
 -- ----------------------------
 DROP TABLE IF EXISTS `et_user`;
@@ -613,12 +658,12 @@ CREATE TABLE `et_user` (
   `department` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of et_user
 -- ----------------------------
-INSERT INTO `et_user` VALUES ('4', 'admin', null, '260acbffd3c30786febc29d7dd71a9880a811e77', '1@1.1', null, '2015-01-19 16:52:37', null, null, '1', '1', '2015-01-11 14:59:25', '2015-01-19 16:52:37', null, '2', '3');
+INSERT INTO `et_user` VALUES ('4', 'admin', null, '260acbffd3c30786febc29d7dd71a9880a811e77', '1@1.1', null, '2015-02-15 21:24:53', null, null, '1', '1', '2015-02-13 14:52:05', '2015-02-15 21:24:53', null, '2', '3');
 
 -- ----------------------------
 -- Table structure for `et_user_exam_history`

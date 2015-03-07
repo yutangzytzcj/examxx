@@ -24,6 +24,7 @@ import com.extr.domain.question.KnowledgePoint;
 import com.extr.domain.question.Question;
 import com.extr.domain.question.QuestionContent;
 import com.extr.domain.question.QuestionStruts;
+import com.extr.domain.question.QuestionTag;
 import com.extr.domain.question.QuestionType;
 import com.extr.domain.question.Tag;
 import com.extr.domain.question.UserQuestionHistory;
@@ -350,5 +351,55 @@ public class QuestionServiceImpl implements QuestionService {
 	public void addTag(Tag tag) {
 		// TODO Auto-generated method stub
 		questionMapper.addTag(tag);
+	}
+
+	@Override
+	public List<QuestionTag> getQuestionTagByQuestionIdAndUserId(int questionId,
+			int userId, Page<QuestionTag> page) {
+		// TODO Auto-generated method stub
+		return questionMapper.getQuestionTagByQuestionIdAndUserId(questionId, userId, page);
+	}
+
+	@Override
+	@Transactional
+	public void addQuestionTag(int questionId, int userId, List<QuestionTag> questionTagList) {
+		// TODO Auto-generated method stub
+		try{
+			questionMapper.deleteQuestionTag(questionId, userId, questionTagList);
+			questionMapper.addQuestionTag(questionTagList);
+			
+		}catch(Exception e){
+			throw new RuntimeException(e);
+		}
+		
+	}
+
+	/**
+	 * 重载，整合了tag的功能
+	 * @see com.extr.service.QuestionServiceImpl#updateQuestionPoint(Question question)
+	 * @param question
+	 * @param userId
+	 * @param questionTagList
+	 */
+	@Override
+	@Transactional
+	public void updateQuestionPoint(Question question, int userId,
+			List<QuestionTag> questionTagList) {
+		// TODO Auto-generated method stub
+		try {
+			questionMapper.deleteQuestionPointByQuestionId(question.getId());
+			for (int id : question.getPointList()) {
+				questionMapper.addQuestionKnowledgePoint(question.getId(), id);
+			}
+			
+			if(questionTagList != null && questionTagList.size() != 0){
+				questionMapper.deleteQuestionTag(question.getId(), userId, questionTagList);
+				questionMapper.addQuestionTag(questionTagList);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e.getClass().getName());
+		}
 	}
 }

@@ -35,6 +35,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.question-name-td{
 				width:300px;
 			}
+			.change-property{
+				cursor:pointer;
+			}
+			.add-tag-btn{
+				cursor:pointer;
+			}
 		</style>
 	</head>
 	<body>
@@ -219,7 +225,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table class="table-striped table">
 									<thead>
 										<tr>
-											<td></td><td>ID</td><td class="question-name-td">试题名称</td><td>试题类型</td><td>专业</td><td>知识类</td><td>关键字</td><td>操作</td>
+											<td></td><td>ID</td><td class="question-name-td" style="width:240px">试题名称</td><td style="width:60px">试题类型</td><td>专业</td><td>知识类</td><!-- <td>关键字</td> --><td>操作</td>
 										</tr>
 									</thead>
 									<tbody>
@@ -231,11 +237,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												</td><td>${items.id }</td>
 												<td>
 													<a href="admin/question-preview/${items.id }" target="_blank" title="预览">${items.name }</a>
+													<!-- 此处改成标签 -->
 													<span class="examing-point">${items.examingPoint} </span>
 												</td>
 												
 												
-												<td>${items.questionTypeName }</td><td>${items.fieldName }</td><td>${items.pointName }</td><td>${items.keyword }</td>
+												<td>${items.questionTypeName }</td><td>${items.fieldName }</td><td>${items.pointName }</td>
+												<%-- <td>${items.keyword }</td> --%>
 												<td style="width:50px;">
 													<a class="change-property">修改</a>
 												</td>
@@ -267,11 +275,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														     		<div class="form-line exampaper-type" id="aq-course2">
 																		<span class="form-label"><span class="warning-label">*</span>知识类：</span>
 																		<select id="point-from-select" class="df-input-narrow">
-																			
-																			
+																			<c:forEach items="${knowledgeList}" var="item">
+																				<option value="${item.pointId}">${item.pointName} </option>
+																			</c:forEach>
 																		</select><span class="form-message"></span>
 																	</div>
-																	
+																	<div class="form-line exampaper-type" id="aq-tag">
+																		<span class="form-label"><span class="warning-label">*</span>标签：</span>
+																		<select id="tag-from-select" class="df-input-narrow">
+																			<c:forEach items="${tagList }" var="item">
+																				<option value="${item.tagId }" data-privatee="${item.privatee }" data-creator="${item.creator}" data-memo="${item.memo }" data-createtime="${item.createTime }">${item.tagName } </option>
+																			</c:forEach>
+																			
+																		</select><a class="add-tag-btn">添加</a><span class="form-message"></span>
+																		
+																		<div class="q-label-list">
+																		</div>
+																	</div>
 																</form>
 														     </div>
 														     <div class="modal-footer">
@@ -325,22 +345,82 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$("#change-property-modal").modal({backdrop:true,keyboard:true});
 					var paper_id =  $(this).parent().parent().find(":checkbox").val();
 					$("#add-update-questionid").text(paper_id);
-					
-				});
-				$("#update-exampaper-btn").click(function(){
-					
-					if($("#point-from-select").val()==null||$("#point-from-select").val()==""){
-						util.error("请选择知识类");
-					}
-					$("#point-from-select").val();
-					
 					$.ajax({
 						headers : {
 							'Accept' : 'application/json',
 							'Content-Type' : 'application/json'
 						},
 						type : "GET",
+						url : "teacher/question-tag/" + paper_id,
+						success : function(message, tst, jqXHR) {
+							if (!util.checkSessionOut(jqXHR))
+								return false;
+							if (message.result == "success") {
+								//将message.object里面的内容写到 div（class=q-label-list）里面
+								var innerHtml = "";
+								$.each(message.object,function(index,element){
+									innerHtml += "<span class=\"label label-info q-label-item\" data-privatee=" 
+										+ element.privatee + " data-creator=" + element.creator
+										+" data-memo="+ element.memo
+										+" data-id="+ element.tagId
+										+ ">" + element.tagName + "  <i class=\"fa fa-times\"></i>	</span>";
+								});
+								$(".q-label-list").html(innerHtml);
+							} else {
+								util.error("操作失败请稍后尝试:" + message.result);
+							}
+
+						},
+						error : function(jqXHR, textStatus) {
+							util.error("操作失败请稍后尝试");
+						}
+					});					
+				});
+				
+				$(".add-tag-btn").click(function(){
+					var label_ids = $(".q-label-item");
+					var flag = 0;
+					label_ids.each(function(){
+						if($(this).data("id") == $("#tag-from-select").val())
+							flag = 1;
+					});
+					if(flag == 0){
+						var selected = $("#tag-from-select").find("option:selected");
+					
+						$(".q-label-list").append("<span class=\"label label-info q-label-item\" data-privatee=" 
+								+ selected.data("privatee")  + " data-creator=" + selected.data("creator") 
+								+" data-memo="+ selected.data("memo") 
+								+" data-id="+ $("#tag-from-select").val()
+								+" data-createTime="+ selected.data("createTime") +">" 
+								+ $("#tag-from-select :selected").text() + "  <i class=\"fa fa-times\"></i>	</span>");
+					}
+					else{
+						util.error("不能重复添加");
+					}
+				});
+				
+				$("#update-exampaper-btn").click(function(){
+					
+					if($("#point-from-select").val()==null||$("#point-from-select").val()==""){
+						util.error("请选择知识类");
+					}
+					$("#point-from-select").val();
+					var data = new Array();
+					
+					$(".q-label-item").each(function(){
+						var tag = new Object();
+						tag.tagId = $(this).data("id");
+						tag.questionId = $("#add-update-questionid").text();
+						data.push(tag);
+					});
+					$.ajax({
+						headers : {
+							'Accept' : 'application/json',
+							'Content-Type' : 'application/json'
+						},
+						type : "POST",
 						url : "admin/question-update/" + $("#add-update-questionid").text() + "/" +  $("#point-from-select").val(),
+						data : JSON.stringify(data),
 						success : function(message, tst, jqXHR) {
 							if (!util.checkSessionOut(jqXHR))
 								return false;
@@ -359,6 +439,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					});
 					
 					return false;
+				});
+				
+				$(".q-label-list").on("click",".fa",function(){
+					$(this).parent().remove();
 				});
 				
 				
