@@ -1,4 +1,4 @@
-** Exam++已发布第二版并正式更名为Examstack，详情请进入官网查看 **
+* Exam++已发布第二版并正式更名为Examstack，详情请进入[官网](http://www.examstack.com)查看 *
 
 # [Exam++](http://www.examxx.net)
 
