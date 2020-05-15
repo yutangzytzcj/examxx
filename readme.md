@@ -1,10 +1,6 @@
 
-驾校网络在线练习网站
-# [Exam++](http://www.examxx.net)
-# Exam++已发布第二版并正式更名为Examstack，详情请进入[官网](http://www.examstack.com)查看
-
-- [Exam++](http://www.examxx.net)是国内首款基于`JAVA`与`MYSQL`开发的网络考试系统。它可以稳定、顺畅的运行在`Windows`与`Linux`平台上。您可以通过它快捷方便的创建试题和题库，发布试卷，组织考试，系统自动批改。高度的可配置性和灵活性使得它可以被应用于很多领域。
-
+驾校网络在线练习网站 
+spring+springmvc+mybatis
 - 软件采用`GPL`协议，完全开放且免费，并且有固定的开发团队提供技术支持
 [官方网站](http://www.examxx.net)
 ![](http://static.oschina.net/uploads/space/2015/0129/193211_RwoW_135389.png)
@@ -28,7 +24,7 @@
 ||用户管理|教师或管理员可以管理目前网站的注册用户。|
 
 ##使用
-- [Exam++](http://www.examxx.net)采用了mysql数据库，因此，请安装mysql（5.0以上版本），安装完毕后，请创建一个名为examxx的数据库，并将doc目录下的数据库文件`examxx.sql`导入到数据库。
+- [Exam++]采用了mysql数据库，因此，请安装mysql（5.0以上版本），安装完毕后，请创建一个名为examxx的数据库，并将doc目录下的数据库文件`examxx.sql`导入到数据库。
 - 请将examxx.war拷贝到tomcat目录下的webapps目录中。
 - tomcat启动后，war包自动部署到tomcat，打开webapps\examxx\WEB-INF\spring\root-context.xml修改数据库配置，填写你自己的数据库信息，如下：
 
