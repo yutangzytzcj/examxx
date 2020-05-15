@@ -1,5 +1,5 @@
 
-
+驾校网络在线练习网站
 # [Exam++](http://www.examxx.net)
 # Exam++已发布第二版并正式更名为Examstack，详情请进入[官网](http://www.examstack.com)查看
 
@@ -38,10 +38,6 @@
 ![](http://git.oschina.net/ocelot/examxx/raw/master/doc/222.jpg)
 - 点击右上角登录按钮，输入用户名admin和密码123456即可登录系统。
 
-##问题
-- 如果有任何问题或者建议请发email：<link4hy@126.com>,<mars-fox@163.com>。 建议与问题一经采纳即会将您的贡献大名列入[Exam++](http://www.examxx.net)的感谢名单中。
-- 或加入QQ群和我们一起讨论吧！
-[![](http://pub.idqqimg.com/wpa/images/group.png)](http://shang.qq.com/wpa/qunwpa?idkey=b365bd36df1bd42ffcf8ab7b91fb93f21841548bcda6ec721de276bae9f72e35)
 
 ##修改记录
 - 2015-03-07 试题增加标签功能
